@@ -1,4 +1,4 @@
-# Startup
+# Boggle Startup
 Startup application for BYU CS260
 
 ## Notes
