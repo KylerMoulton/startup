@@ -11,5 +11,18 @@ You know that game that your grandparents had that you always hated playing beca
 ![startupdesign](https://github.com/KylerMoulton/startup/assets/51665872/a54733ef-61ee-4980-8b04-46c444f6893e)
 
 ### Key Features
-
+* Secure Login over HTTPS
+* Fully Interactive Boggle Board
+* Highschore System that includes personal and global categories
+* Highschores include the score and the longest word that was spelled
+* Live game and score updates from all players currently playing a game
 ### Technologies
+* **HTML** - Uses 4 HTML pages. For logging in, playing, and viewing both of the highscore pages
+* **CSS** - Uses to make a clean page that adjusts for different screen sizes and looks good on different systems
+* **JavaScript** - Allows login, dice shuffling, displays other users game scores and longest words, backend endpoint calls
+* **Service** - Back end service with endpoints for
+  * login
+  * retrieving scores and longest words
+* **DB/Login** - Stores users, scores, and longest words in database. Logs in and registers users. Can't view or save scores unless authenticated.
+* **WebSocket** - When a user starts a game it is broadcasted to all players. When a user ends a game their final score and longest word are broadcasted to all players.
+* **React** - Application modified to use React
