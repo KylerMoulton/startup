@@ -7,6 +7,9 @@
 #navbar ul {
   list-style-type: none;
   display: flex;
+  flex: 1;
+  justify-content: left;
+  align-items: center;
   margin: 0;
   padding: 0;
 }
@@ -14,7 +17,8 @@
 #navbar li {
   margin-right: 20px; /* Adjust spacing between navigation items */
 }
-#navbar li h1 {
+
+#navbar li  {
   font-family: "Kanit", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -32,6 +36,6 @@
   cursor: pointer;
 }
 
-#Login/RegisterButton {
+#navbar li dialog {
   display: none; /* Initially hide dialog */
 }
