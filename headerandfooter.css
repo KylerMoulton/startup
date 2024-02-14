@@ -51,16 +51,57 @@ button#show-diolog {
   border-radius: 10px;
   color: white;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  transition:active 0.15s ease-in-out;
 }
 button#show-diolog:hover {
   transform: scale(1.1);
+  transition-duration: 0.5s;
 }
 button#show-diolog:active {
   background-color: #249ca5;
+  transition-duration: all .5s;
 }
-
+#home:hover {
+  font-size:larger;
+  transition-duration: 0.5s;
+}
+#home:active {
+  color: #249ca5;
+  transition-duration: all .5s;
+}
+#scores:hover {
+  font-size:larger;
+  transition-duration: 0.5s;
+}
+#scores:active {
+  color: #249ca5;
+  transition-duration: all .5s;
+}
+#rules:hover {
+  font-size:larger;
+  transition-duration: 0.5s;
+}
+#rules:active {
+  color: #249ca5;
+  transition-duration: all .5s;
+}
 #navbar li dialog {
   display: none; /* Initially hide dialog */
+}
+
+#footer {
+  display: flex;
+  background-color:rgb(255, 185, 33);
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 20px;
+  text-decoration: none;
+  color:#1ac2ce;
+  text-shadow: #249ca5;
+  cursor: pointer;
+}
+#footer a {
+  text-decoration: none;
+  color:#1ac2ce;
+  text-shadow: #249ca5;
 }
