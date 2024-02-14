@@ -26,3 +26,11 @@ You know that game that your grandparents had that you always hated playing beca
 * **DB/Login** - Stores users, scores, and longest words in database. Logs in and registers users. Can't view or save scores unless authenticated.
 * **WebSocket** - When a user starts a game it is broadcasted to all players. When a user ends a game their final score and longest word are broadcasted to all players.
 * **React** - Application modified to use React
+
+## HTML Deliverable
+* HTML pages - 3 HTML pages that allow you to play the game, see personal and global scores, and see the rules. Pop up HTML page with login and register capability.
+* Links - All 3 pages have links to each other along with a button that lets them either login or register.
+* Text - There is a page that list the rules as well as headings and markers for different sections on each page
+* Images - Added an image of a physical boggle game for users to see what my game is based off of.
+* DB/Login - Pop up window that allows the user to login/register. Also a scoreboard that will toggle between the users highscores and the top highscores of every registered player that has reached a top score. The best word associated with the score is also displayed.
+* WebSocket - Everytime a user starts/ends a game it is displayed to every user  currently logged in. Along with the end game notification the score and longest word are also displayed.
