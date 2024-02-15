@@ -16,23 +16,27 @@
     <header>
         <nav id="navbar">
             <ul>
-            <li><h1 id="title">Boggle4DaGoats</h1></li>
-            <li><a id="home" href="index.html">Home</a></li>
-            <li><a id="scores" href="scores.html">Scores</a></li>
-            <li><a id="rules" href="rules.html">Rules</a></li>
-            <li><dialog open id="Login/RegisterButton">
-                <div>Login</div>
-                <div>Register</div>
-                <input type="text" id="username" placeholder="Enter your username" />
-                <br>
-                <input type="password" id="password" placeholder="Enter your password" />
-                <br>
-                <button id="hide">Login</button>
-            </dialog></li>
-        </ul>    
+                <li>
+                    <h1 id="title">Boggle4DaGoats</h1>
+                </li>
+                <li><a id="home" href="index.html">Home</a></li>
+                <li><a id="scores" href="scores.html">Scores</a></li>
+                <li><a id="rules" href="rules.html">Rules</a></li>
+                <li>
+                    <dialog open id="Login-RegisterButton">
+                        <div class="button-container">
+                            <button id="login-button">Login</button>
+                            <button id="register-button">Register</button>
+                        </div>
+                        <input type="text" id="username" placeholder="Enter your username" />
+                        <br>
+                        <input type="password" id="password" placeholder="Enter your password" />
+                    </dialog>
+            </ul>
             <li><button id="show-diolog">Login/Register</button></li>
         </nav>
     </header>
+
     <body>
         <div>Global</div>
         <div>Personal</div>
@@ -47,9 +51,9 @@
     </body>
     <footer>
         <div id="footer">
-        <span class="text-reset">Kyler Moulton</span>
-        <br />
-        <a href="https://github.com/KylerMoulton/startup">GitHub</a>
+            <span class="text-reset">Kyler Moulton</span>
+            <br />
+            <a href="https://github.com/KylerMoulton/startup">GitHub</a>
         </div>
     </footer>
 </body>
