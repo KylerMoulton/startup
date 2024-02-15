@@ -1,0 +1,47 @@
+html {
+    background-color: #1ac2ce;
+}
+main {
+    display: flex;
+    justify-content: space-between;
+    margin: 12px; /* Adjust outer margin */
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #1ac2ce;
+}
+
+#personal,
+#global {
+    text-align: center;
+    height: 63vh;
+    margin:10px;
+    flex: 1;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.high-score-data {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    gap: 10px; /* Adjust gap between grid items */
+}
+
+.column {
+    text-align: center;
+    font-weight: bold;
+}
+
+.player-score-data {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    gap: 10px; /* Adjust gap between grid items */
+}
+
+.name,
+.score,
+.longest-word {
+    text-align: center;
+}
+

@@ -147,7 +147,7 @@ button#show-diolog:active {
   padding: 20px;
   border-radius: 10px;
   z-index: 10000; /* Ensure the dialog appears above the overlay */
-  display: open; /* Initially hidden */
+  display: none; /* Initially hidden */
   text-align: center; /* Center the content horizontally */
 }
 
