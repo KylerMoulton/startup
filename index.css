@@ -67,6 +67,7 @@ main {
     grid-template-columns: repeat(4, 1fr); 
     gap: 10px; 
     background-color:rgb(255, 185, 33);
+    border-radius: 5px;
     padding: 10px;
 }
 
