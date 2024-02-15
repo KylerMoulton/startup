@@ -101,6 +101,10 @@ button#show-diolog:active {
 }
 
 #footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 97.1%;
   display: flex;
   background-color:rgb(255, 185, 33);
   justify-content: space-between;
