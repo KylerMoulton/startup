@@ -31,7 +31,7 @@ html, body {
 }
 
 #navbar li {
-  margin-right: 30px; /* Adjust spacing between navigation items */
+  margin-right: 30px; 
 }
 
 #navbar  {
@@ -54,7 +54,7 @@ button#show-diolog {
   font-weight: 400;
   font-style: normal;
   padding: 8px 16px;
-  background-color: #1ac2ce; /* Change background color as needed */
+  background-color: #1ac2ce; 
   border-radius: 10px;
   color: white;
   cursor: pointer;
@@ -97,7 +97,7 @@ button#show-diolog:active {
   transition-duration: all .5s;
 }
 #navbar li dialog {
-  display: none; /* Initially hide dialog */
+  display: none; 
 }
 
 #footer {

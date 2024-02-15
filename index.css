@@ -11,7 +11,7 @@ main {
   #websocket,
   #game,
   #UserWords {
-    flex: 1; /* Each section takes up equal space */
+    flex: 1; 
     display: flex;
     margin:10px;
   }
@@ -19,39 +19,39 @@ main {
     flex-direction: column;
   }
   .Game-Notifications {
-    width: 30vw; /* Adjust width as needed */
+    width: 30vw; 
     height: 69.8vh;
     padding: 10px;
-    background-color: #f0f0f0; /* Background color of the chat box */
-    border-radius: 10px; /* Rounded corners */
+    background-color: #f0f0f0; 
+    border-radius: 10px; 
   }
   
   .player-name {
-    background-color: #d3d3d3; /* Background color of each message */
-    padding: 8px 12px; /* Adjust padding as needed */
-    margin-bottom: 5px; /* Adjust margin between messages */
-    border-radius: 5px; /* Rounded corners for each message */
+    background-color: #d3d3d3; 
+    padding: 8px 12px; 
+    margin-bottom: 5px; 
+    border-radius: 5px; 
   }
   .Words-found {
-    width: 30vw; /* Adjust width as needed */
+    width: 30vw; 
     height: 69.8vh;
     padding: 10px;
-    background-color: #f0f0f0; /* Background color of the chat box */
-    border-radius: 10px; /* Rounded corners */
+    background-color: #f0f0f0; 
+    border-radius: 10px; 
   }
   
   .word {
-    background-color: #d3d3d3; /* Background color of each message */
-    padding: 8px 12px; /* Adjust padding as needed */
-    margin-bottom: 5px; /* Adjust margin between messages */
-    border-radius: 5px; /* Rounded corners for each message */
+    background-color: #d3d3d3; 
+    padding: 8px 12px; 
+    margin-bottom: 5px; 
+    border-radius: 5px; 
   }
   #game {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center items horizontally */
-    justify-content: center; /* Center items vertically */
-    height: 69.8vh; /* Take up full viewport height */
+    align-items: center; 
+    justify-content: center; 
+    height: 69.8vh; 
 }
 
 #timer {
@@ -64,17 +64,17 @@ main {
 
 #game-board {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Create a 4-column grid */
-    gap: 10px; /* Add space between grid items */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 10px; 
     background-color:rgb(255, 185, 33);
     padding: 10px;
 }
 
 .gridbox {
-    padding: 20px; /* Adjust padding as needed */
-    background-color: white; /* Adjust background color as needed */
-    border-radius: 8px; /* Add rounded corners */
-    text-align: center; /* Center content horizontally */
+    padding: 20px; 
+    background-color: white; 
+    border-radius: 8px; 
+    text-align: center; 
     font-size: xx-large;
 }
 
