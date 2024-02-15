@@ -14,23 +14,24 @@
 
 <body>
     <header>
-        <h1>Boggle4DaGoats</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="scores.html">Scores</a>
-            <a href="rules.html">Rules</a>
-                <dialog open id="Login/Register Button">
-                    <div>Login</div>
-                    <div>Register</div>
-                    <input type="text" id="username" placeholder="Enter your username" />
-                    <br>
-                    <input type="password" id="password" placeholder="Enter your password" />
-                    <br>
-                    <button id="hide">Login</button>
-                </dialog>
-                <button id="show-diolog">Login/Register</button>
+        <nav id="navbar">
+            <ul>
+            <li><h1 id="title">Boggle4DaGoats</h1></li>
+            <li><a id="home" href="index.html">Home</a></li>
+            <li><a id="scores" href="scores.html">Scores</a></li>
+            <li><a id="rules" href="rules.html">Rules</a></li>
+            <li><dialog open id="Login/RegisterButton">
+                <div>Login</div>
+                <div>Register</div>
+                <input type="text" id="username" placeholder="Enter your username" />
+                <br>
+                <input type="password" id="password" placeholder="Enter your password" />
+                <br>
+                <button id="hide">Login</button>
+            </dialog></li>
+        </ul>    
+            <li><button id="show-diolog">Login/Register</button></li>
         </nav>
-        <hr />
     </header>
     <body>
         <div>Global</div>
@@ -45,10 +46,11 @@
 
     </body>
     <footer>
-        <hr />
+        <div id="footer">
         <span class="text-reset">Kyler Moulton</span>
         <br />
         <a href="https://github.com/KylerMoulton/startup">GitHub</a>
+        </div>
     </footer>
 </body>
 

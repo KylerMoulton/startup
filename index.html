@@ -16,37 +16,38 @@
     <header>
         <nav id="navbar">
             <ul>
-            <li><h1 id="title">Boggle4DaGoats</h1></li>
-            <li><a id="home" href="index.html">Home</a></li>
-            <li><a id="scores" href="scores.html">Scores</a></li>
-            <li><a id="rules" href="rules.html">Rules</a></li>
-            <li><dialog open id="Login/RegisterButton">
-                <div>Login</div>
-                <div>Register</div>
-                <input type="text" id="username" placeholder="Enter your username" />
-                <br>
-                <input type="password" id="password" placeholder="Enter your password" />
-                <br>
-                <button id="hide">Login</button>
-            </dialog></li>
-        </ul>    
+                <li>
+                    <h1 id="title">Boggle4DaGoats</h1>
+                </li>
+                <li><a id="home" href="index.html">Home</a></li>
+                <li><a id="scores" href="scores.html">Scores</a></li>
+                <li><a id="rules" href="rules.html">Rules</a></li>
+                <li>
+                    <dialog open id="Login/RegisterButton">
+                        <div>Login</div>
+                        <div>Register</div>
+                        <input type="text" id="username" placeholder="Enter your username" />
+                        <br>
+                        <input type="password" id="password" placeholder="Enter your password" />
+                        <br>
+                        <button id="hide">Login</button>
+                    </dialog>
+                </li>
+            </ul>
             <li><button id="show-diolog">Login/Register</button></li>
         </nav>
     </header>
     <main>
-        <h1>Time Left</h1>
-        <div id="timer">3:00</div>
-        <br />
-        <div class="player">
-            Player:
-            <span class="player-name">Boggle Goat</span>
-        </div>
-        <ul class="Game-Notifications">
-            <li class="player-name">Kyler started a new game</li>
-            <li class="player-name">Kyler scored 68</li>
-            <li class="player-name">Kyler had a longest word of: GOAT</li>
-        </ul>
-        <br />
+        <section id="websocket">
+            <ul class="Game-Notifications">
+                <li class="player-name">Kyler started a new game</li>
+                <li class="player-name">Kyler scored 68</li>
+                <li class="player-name">Kyler had a longest word of: GOAT</li>
+            </ul>
+        </section>
+        <section id="game">
+        <div id="timer">Time Left</div>
+        <div id="timer-text">3:00</div>
         <div id=’1' class=’gridbox’>1</div>
         <div id=’2' class=’gridbox’>2</div>
         <div id=’3' class=’gridbox’>3</div>
@@ -63,7 +64,8 @@
         <div id=’14' class=’gridbox’>14</div>
         <div id=’15' class=’gridbox’>15</div>
         <div id=’16' class=’gridbox’>16</div>
-        <br />
+        </section>
+        <section id="UserWords">
         <div class="words">
             Words Found
         </div>
@@ -73,12 +75,13 @@
             <li class="word-found">Da</li>
             <li class="word-found">Goats</li>
         </ul>
+        </section>
     </main>
     <footer>
         <div id="footer">
-        <span class="text-reset">Kyler Moulton</span>
-        <br />
-        <a href="https://github.com/KylerMoulton/startup">GitHub</a>
+            <span class="text-reset">Kyler Moulton</span>
+            <br />
+            <a href="https://github.com/KylerMoulton/startup">GitHub</a>
         </div>
     </footer>
 </body>
