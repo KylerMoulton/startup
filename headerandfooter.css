@@ -13,7 +13,11 @@ html, body {
 }
 #navbar h1 {
   color:#1ac2ce;
-  text-shadow: #249ca5;
+  text-shadow:
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
 }
 #navbar ul {
   list-style-type: none;
@@ -38,7 +42,11 @@ html, body {
 #navbar a {
   text-decoration: none;
   color:#1ac2ce;
-  text-shadow: #249ca5;
+  text-shadow:
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
 }
 
 button#show-diolog {
@@ -47,10 +55,14 @@ button#show-diolog {
   font-style: normal;
   padding: 8px 16px;
   background-color: #1ac2ce; /* Change background color as needed */
-  border:none;
   border-radius: 10px;
   color: white;
   cursor: pointer;
+  text-shadow:
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
 }
 button#show-diolog:hover {
   transform: scale(1.1);
@@ -98,10 +110,28 @@ button#show-diolog:active {
   text-decoration: none;
   color:#1ac2ce;
   text-shadow: #249ca5;
-  cursor: pointer;
+  font-size:larger;
+  text-shadow:
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
 }
 #footer a {
   text-decoration: none;
   color:#1ac2ce;
-  text-shadow: #249ca5;
+  font-size:larger;
+  text-shadow:
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+#footer a:hover {
+  font-size:x-large;
+  transition-duration: 0.5s;
+}
+#footer a:active {
+  color: #249ca5;
+  transition-duration: all .5s;
 }
