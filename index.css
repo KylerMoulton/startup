@@ -2,7 +2,10 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #1ac2ce;
   }
   
   #websocket,
@@ -43,4 +46,37 @@ main {
     margin-bottom: 5px; /* Adjust margin between messages */
     border-radius: 5px; /* Rounded corners for each message */
   }
+  #game {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    height: 69.8vh; /* Take up full viewport height */
+}
+
+#timer {
+    display: flex;
+    width: 300px;
+    flex-direction: row;
+    justify-content: center;
+    font-size: x-large;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Create a 4-column grid */
+    gap: 10px; /* Add space between grid items */
+    background-color:rgb(255, 185, 33);
+    padding: 10px;
+}
+
+.gridbox {
+    padding: 20px; /* Adjust padding as needed */
+    background-color: white; /* Adjust background color as needed */
+    border-radius: 8px; /* Add rounded corners */
+    text-align: center; /* Center content horizontally */
+    font-size: xx-large;
+}
+
+  
   
