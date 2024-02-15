@@ -147,7 +147,7 @@ button#show-diolog:active {
   padding: 20px;
   border-radius: 10px;
   z-index: 10000; 
-  display: none; 
+  display: open; 
   text-align: center; 
 }
 

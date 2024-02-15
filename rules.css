@@ -1,0 +1,37 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.background-image {
+    background-image: url('BoggleImage2.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+}
+
+.rules-container {
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding: 20px;
+    max-width: 600px; 
+    text-align: left; 
+    border-radius: 10px; 
+    margin:auto;
+    margin-top: 8vh;
+}
+
+.rules-container ul {
+    padding-left: 20px;
+    list-style-type: decimal; 
+}
+
+.rules-container ul li {
+    margin-bottom: 10px;
+}
+
+.rules-container p {
+    margin-top: 20px;
+}
