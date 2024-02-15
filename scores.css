@@ -4,7 +4,7 @@ html {
 main {
     display: flex;
     justify-content: space-between;
-    margin: 12px; /* Adjust outer margin */
+    margin: 12px; 
     font-family: "Kanit", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -24,8 +24,8 @@ main {
 
 .high-score-data {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
-    gap: 10px; /* Adjust gap between grid items */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px; 
 }
 
 .column {
@@ -35,8 +35,8 @@ main {
 
 .player-score-data {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
-    gap: 10px; /* Adjust gap between grid items */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px; 
 }
 
 .name,
