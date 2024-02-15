@@ -96,9 +96,6 @@ button#show-diolog:active {
   color: #249ca5;
   transition-duration: all .5s;
 }
-#navbar li dialog {
-  display: none; 
-}
 
 #footer {
   position: fixed;
@@ -139,3 +136,64 @@ button#show-diolog:active {
   color: #249ca5;
   transition-duration: all .5s;
 }
+
+/* Styles for the dialog box */
+#Login-RegisterButton {
+  position: fixed;
+  top: 52%;
+  left: 18.5%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(255, 185, 33);;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 10000; /* Ensure the dialog appears above the overlay */
+  display: open; /* Initially hidden */
+  text-align: center; /* Center the content horizontally */
+}
+
+/* Styles for the buttons */
+.button-container {
+  margin-bottom: 20px;
+}
+
+#login-button,
+#register-button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  background-color: #1ac2ce; /* Change background color as needed */
+  color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#login-button:hover,
+#register-button:hover {
+  background-color: #169aa3; /* Change background color as needed */
+}
+
+/* Styles for the input boxes */
+#username,
+#password {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #1ac2ce; /* Border color */
+  border-radius: 5px;
+  box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+/* Hover effect for the input boxes */
+#username:hover,
+#password:hover {
+  border-color: #1ea9b3; /* Adjust border color on hover */
+}
+
+/* Focus effect for the input boxes */
+#username:focus,
+#password:focus {
+  outline: none; /* Remove default focus outline */
+  border-color: black; /* Adjust border color on focus */
+}
+
