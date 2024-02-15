@@ -7,6 +7,7 @@
     <title>Boggle4DaGoats</title>
     <link rel="icon" href="boggle.ico" />
     <link rel="stylesheet" href="headerandfooter.css">
+    <link rel="stylesheet" href="index.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
     </style>
@@ -39,11 +40,11 @@
     </header>
     <main>
         <section id="websocket">
-            <ul class="Game-Notifications">
-                <li class="player-name">Kyler started a new game</li>
-                <li class="player-name">Kyler scored 68</li>
-                <li class="player-name">Kyler had a longest word of: GOAT</li>
-            </ul>
+            <div class="Game-Notifications">
+                <div class="player-name">Kyler started a new game</div>
+                <div class="player-name">Kyler scored 68</div>
+                <div class="player-name">Kyler had a longest word of: GOAT</div>
+            </div>
         </section>
         <section id="game">
         <div id="timer">Time Left</div>
@@ -66,15 +67,11 @@
         <div id=’16' class=’gridbox’>16</div>
         </section>
         <section id="UserWords">
-        <div class="words">
-            Words Found
-        </div>
-        <ul class="words-found">
-            <li class="word-found">Boggle</li>
-            <li class="word-found">4</li>
-            <li class="word-found">Da</li>
-            <li class="word-found">Goats</li>
-        </ul>
+            <div class="Words-found">
+                <div class="word">You just spelled: Goat</div>
+                <div class="word">You just spelled: Amazing</div>
+                <div class="word">You just spelled: Boggle</div>
+            </div>
         </section>
     </main>
     <footer>
