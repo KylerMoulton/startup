@@ -15,9 +15,15 @@ main {
     display: flex;
     margin:10px;
   }
-  #game {
+  #game-container {
+    display: flex;
     flex-direction: column;
-  }
+    align-items: center;
+    justify-content: center;
+    height: 69.8vh;
+    margin: 10px;
+}
+
   .Game-Notifications {
     width: 30vw; 
     height: 69.8vh;
@@ -56,10 +62,12 @@ main {
 
 #timer {
     display: flex;
-    width: 300px;
+    width: 350px;
     flex-direction: row;
     justify-content: center;
     font-size: x-large;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #game-board {
@@ -79,5 +87,34 @@ main {
     font-size: xx-large;
 }
 
-  
+#score-container {
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size:large;
+    background-color: rgb(255, 185, 33);
+    border-color: black;
+    border-width:3px;
+    padding: 3px;
+    border-radius: 10px;
+    margin-right: 5px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#start-button {
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size:large;
+    background-color: rgb(255, 185, 33);
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 5px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
   
