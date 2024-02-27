@@ -34,3 +34,11 @@ You know that game that your grandparents had that you always hated playing beca
 * Images - Added an image of a physical boggle game for users to see what my game is based off of.
 * DB/Login - Pop up window that allows the user to login/register. Also a scoreboard that will toggle between the users highscores and the top highscores of every registered player that has reached a top score. The best word associated with the score is also displayed.
 * WebSocket - Everytime a user starts/ends a game it is displayed to every user  currently logged in. Along with the end game notification the score and longest word are also displayed.
+
+## CSS deliverable
+* Header, footer, and main content body**
+* Navigation elements** - I dropped the underline and changed the font and styles along with adding animations that change the size and color
+* Responsive to window resizing** - My app looks kind of great until I hit a certain size which I plan on fixing
+* Application elements** - I tried to use a variety of colors that coresponded with boggle and also looked decent together
+* Application text content** - Consistent fonts
+* Application images** - I made the image the background for the rules tab and made the rules transparent slightly so that you can see the ful thing.
