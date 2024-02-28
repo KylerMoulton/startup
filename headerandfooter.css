@@ -194,3 +194,6 @@ button#show-diolog:active {
   border-color: black; 
 }
 
+.blur {
+  filter: blur(5px); /* Adjust blur intensity as needed */
+}

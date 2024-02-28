@@ -11,8 +11,10 @@ document.addEventListener("DOMContentLoaded", function() {
     function toggleDialogVisibility() {
         if (loginRegisterDialog.style.display === "none") {
             loginRegisterDialog.style.display = "block";
+            document.getElementById("main-content").classList.add("blur");
         } else {
             loginRegisterDialog.style.display = "none";
+            document.getElementById("main-content").classList.remove("blur");
         }
     }
 
