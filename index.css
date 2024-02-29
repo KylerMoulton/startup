@@ -1,120 +1,124 @@
 main {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-family: "Kanit", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    background-color: #1ac2ce;
-  }
-  
-  #websocket,
-  #game,
-  #UserWords {
-    flex: 1; 
-    display: flex;
-    margin:10px;
-  }
-  #game-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 69.8vh;
-    margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: "Kanit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #1ac2ce;
 }
 
-  .Game-Notifications {
-    width: 30vw; 
-    height: 69.8vh;
-    padding: 10px;
-    background-color: #f0f0f0; 
-    border-radius: 10px; 
-  }
-  
-  .player-name {
-    background-color: #d3d3d3; 
-    padding: 8px 12px; 
-    margin-bottom: 5px; 
-    border-radius: 5px; 
-  }
-  .Words-found {
-    width: 30vw; 
-    height: 69.8vh;
-    padding: 10px;
-    background-color: #f0f0f0; 
-    border-radius: 10px; 
-  }
-  
-  .word {
-    background-color: #d3d3d3; 
-    padding: 8px 12px; 
-    margin-bottom: 5px; 
-    border-radius: 5px; 
-  }
-  #game {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center; 
-    height: 69.8vh; 
+#websocket,
+#game,
+#UserWords { 
+  display: flex;
+  margin:10px;
+}
+
+#game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 69.8vh;
+  margin: 10px;
+}
+
+.Game-Notifications {
+  width: 30vw; 
+  height: 69.8vh;
+  padding: 10px;
+  background-color: #f0f0f0; 
+  border-radius: 10px; 
+}
+
+.player-name {
+  background-color: #d3d3d3; 
+  padding: 8px 12px; 
+  margin-bottom: 5px; 
+  border-radius: 5px; 
+}
+
+.Words-found {
+  width: 30vw; 
+  height: 69.8vh;
+  padding: 10px;
+  background-color: #f0f0f0; 
+  border-radius: 10px; 
+}
+
+.word {
+  background-color: #d3d3d3; 
+  padding: 8px 12px; 
+  margin-bottom: 5px; 
+  border-radius: 5px; 
+}
+
+#game {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  height: 69.8vh; 
 }
 
 #timer {
-    display: flex;
-    width: 350px;
-    flex-direction: row;
-    justify-content: center;
-    font-size: x-large;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  width: 350px;
+  flex-direction: row;
+  justify-content: center;
+  font-size: x-large;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #game-board {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 10px; 
-    background-color:rgb(255, 185, 33);
-    border-radius: 5px;
-    padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 10px; 
+  background-color:rgb(255, 185, 33);
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .gridbox {
-    padding: 20px; 
-    background-color: white; 
-    border-radius: 8px; 
-    text-align: center; 
-    font-size: xx-large;
+  padding: 20px; 
+  background-color: white; 
+  border-radius: 8px; 
+  text-align: center; 
+  font-size: xx-large;
+  width: 45px; /* Adjust width to match size of character */
+  height: 45px;
 }
 
 #score-container {
-    font-family: "Kanit", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size:large;
-    background-color: rgb(255, 185, 33);
-    border-color: black;
-    border-width:3px;
-    padding: 3px;
-    border-radius: 10px;
-    margin-right: 5px;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  font-family: "Kanit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size:large;
+  background-color: rgb(255, 185, 33);
+  border-color: black;
+  border-width:3px;
+  padding: 3px;
+  border-radius: 10px;
+  margin-right: 5px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 #start-button {
-    font-family: "Kanit", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size:large;
-    background-color: rgb(255, 185, 33);
-    padding: 10px;
-    border-radius: 10px;
-    margin-right: 5px;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  font-family: "Kanit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size:large;
+  background-color: rgb(255, 185, 33);
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 5px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-  
