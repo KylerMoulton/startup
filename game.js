@@ -4,22 +4,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Array of strings representing character sets for each grid box
     const characterSets = [
-        "ABCDEF",
-        "GHIJKL",
-        "MNOPQR",
-        "STUVWX",
-        "YZ1234",
-        "567890",
-        "!,@#$%",
-        "^&*()-",
-        "abcdefghijklmnopqrstuvwxyz",
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-        "0123456789",
-        "!@#$%^&*()",
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
-        "0123456789!@#$%^",
-        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
-        "0123456789!@#$%^&*()"
+        "RIFOBX",
+        "IFEHEY",
+        "DENOWS",
+        "UTOKND",
+        "HMSRAO",
+        "LUPETS",
+        "ACITOA",
+        "YLGKUE",
+        "QBMJOA",
+        "EHISPN",
+        "VETIGN",
+        "BALIYT",
+        "EZAVND",
+        "RALESC",
+        "UWILRG",
+        "PACEMD"
     ];
 
     // Function to shuffle the game board
