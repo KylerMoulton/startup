@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
       function updateScores(userName, score, scores) {
         const date = new Date().toLocaleDateString();
-        const newScore = { name: userName, score: score, longestword: longestWord };
+        const newScore = { name: userName, score: score, longestWord: longestWord };
     
         let found = false;
         for (const [i, prevScore] of scores.entries()) {
