@@ -1,3 +1,6 @@
+// Global variable to store the username
+let loggedInUsername = "";
+
 document.addEventListener("DOMContentLoaded", function() {
     const dialogButton = document.getElementById("show-diolog");
     const loginRegisterDialog = document.getElementById("Login-RegisterButton");
@@ -29,6 +32,8 @@ document.addEventListener("DOMContentLoaded", function() {
             // User logged in successfully
             dialogButton.textContent = ("Logout of " + username);
             loggedIn = true;
+            // Set the username to the global variable
+            loggedInUsername = username;
             toggleDialogVisibility();
         } else {
             alert("Incorrect username or password.");
@@ -39,6 +44,8 @@ document.addEventListener("DOMContentLoaded", function() {
     function handleLogout() {
         dialogButton.textContent = "Login/Register";
         loggedIn = false;
+        // Clear the global variable
+        loggedInUsername = "";
     }
 
     // Function to handle registration

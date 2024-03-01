@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
+    // Access the global variable loggedInUsername from login.js
+    console.log("Logged in username:", loggedInUsername);
+
     const startButton = document.getElementById("start-button");
     const gameBoard = document.getElementById("game-board");
     const timerText = document.getElementById("timer-text");
@@ -22,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let score = 0;
     let gameInProgress = false;
     let foundWords = [];
+    let longestWord = "";
 
     function shuffleGameBoard() {
         clearInterval(timerInterval);
@@ -30,6 +34,8 @@ document.addEventListener("DOMContentLoaded", function() {
         resetSelected();
         score = 0;
         scoreContainer.textContent = "Score: 00";
+        foundWords = [];
+        longestWord = "";
 
         const gridBoxes = gameBoard.querySelectorAll('.gridbox');
         const shuffledSets = shuffleArray(characterSets);
@@ -67,6 +73,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 gameBoard.removeEventListener("click", handleBoxClick);
                 submitButton.disabled = true;
                 resetButton.disabled = true;
+                
+                // Game over, store data
+                storeGameData(score);
             }
         }, 1000);
     }
@@ -138,6 +147,11 @@ document.addEventListener("DOMContentLoaded", function() {
                         newWordDiv.classList.add('word');
                         wordsFound.prepend(newWordDiv);
                         foundWords.push(lowerCaseWord);
+                        
+                        // Update longest word
+                        if (selectedWord.length > longestWord.length) {
+                            longestWord = selectedWord;
+                        }
                     })
                     .catch(error => {
                         const newWordDiv = document.createElement('div');
@@ -189,4 +203,52 @@ document.addEventListener("DOMContentLoaded", function() {
         score += totalScore;
         scoreContainer.textContent = `Score: ${score.toString().padStart(2, '0')}`;
     }
+    
+    function storeGameData(score) {
+        const userName = loggedInUsername;
+        let scores = [];
+        const scoresText = localStorage.getItem('gameData');
+        if (scoresText) {
+          scores = JSON.parse(scoresText);
+        }
+        scores = updateScores(userName, score, scores);
+    
+        localStorage.setItem('gameData', JSON.stringify(scores));
+      }
+    
+      function updateScores(userName, score, scores) {
+        const date = new Date().toLocaleDateString();
+        const newScore = { name: userName, score: score, longestword: longestWord };
+    
+        let found = false;
+        for (const [i, prevScore] of scores.entries()) {
+          if (score > prevScore.score) {
+            scores.splice(i, 0, newScore);
+            found = true;
+            break;
+          }
+        }
+    
+        if (!found) {
+          scores.push(newScore);
+        }
+    
+        if (scores.length > 10) {
+          scores.length = 10;
+        }
+    
+        return scores;
+      }
+    
+    
+    
+
+    // Simulate chat messages that will come over WebSocket
+    setInterval(() => {
+        const score = Math.floor(Math.random() * 3000);
+        const chatText = document.querySelector('.Game-Notifications');
+        chatText.innerHTML =
+        `<div class="player-name"><span class="player-event">Eich</span> scored ${score}</div>` +
+        chatText.innerHTML;
+    }, 5000);
 });
