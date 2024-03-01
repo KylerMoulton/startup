@@ -3,11 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const gameBoard = document.getElementById("game-board");
     const timerText = document.getElementById("timer-text");
 
-    let timerInterval;
-    let timerSeconds = 180;
-
-    let previousBox = null; // Variable to store the previously clicked box
-
+    // Array of strings representing character sets for each grid box
     const characterSets = [
         "RIFOBX",
         "IFEHEY",
@@ -27,50 +23,72 @@ document.addEventListener("DOMContentLoaded", function() {
         "PACEMD"
     ];
 
+    let timerInterval; // Variable to hold the interval for the countdown timer
+    let timerSeconds = 180; // Total number of seconds for the timer (3 minutes)
+    let selectedBoxes = new Set(); // Set to store clicked boxes
+    let selectedWord = ""; // String to store the selected word
+    let lastSelectedBox = null; // Variable to store the last selected box
+
+    // Function to shuffle the game board
     function shuffleGameBoard() {
+        // Reset the timer
         clearInterval(timerInterval);
         timerSeconds = 180;
         timerText.textContent = "3:00";
 
+        // Reset selected boxes and word
+        resetSelected();
+
+        // Get all grid boxes
         const gridBoxes = gameBoard.querySelectorAll('.gridbox');
-        gridBoxes.forEach(function(box) {
-            box.style.backgroundColor = '';
-        });
 
+        // Shuffle the character sets array
         const shuffledSets = shuffleArray(characterSets);
-        gridBoxes.forEach(function(box) {
-            const randomSet = shuffledSets[Math.floor(Math.random() * shuffledSets.length)];
-            const randomCharacter = randomSet[Math.floor(Math.random() * randomSet.length)];
-            box.textContent = randomCharacter;
 
-            box.addEventListener('click', function() {
-                if (!box.style.backgroundColor) { // Check if the box has not been clicked before
-                    if (!previousBox || isAdjacentOrDiagonal(previousBox, box)) { // Check if the box is adjacent or diagonal to the previous box
-                        box.style.backgroundColor = '#1ac2ce'; // Change background color to #1ac2ce
-                        previousBox = box; // Update the previousBox variable
-                    }
-                }
-            });
+        // Assign characters from shuffled sets to grid boxes
+        gridBoxes.forEach(function(box) {
+            // Get a random character set from shuffled array
+            const randomSet = shuffledSets[Math.floor(Math.random() * shuffledSets.length)];
+            // Get a random character from the set and add an extra whitespace character
+            const randomCharacter = randomSet[Math.floor(Math.random() * randomSet.length)];
+            // Assign the character to the grid box
+            box.textContent = randomCharacter;
         });
 
+        // Start the countdown timer
         startTimer();
     }
 
+    // Function to reset selected boxes and word
+    function resetSelected() {
+        selectedBoxes.forEach(box => {
+            box.style.backgroundColor = ''; // Reset background color
+        });
+        selectedBoxes.clear(); // Clear selected boxes
+        selectedWord = ""; // Clear selected word
+        lastSelectedBox = null; // Reset last selected box
+    }
+
+    // Function to start the countdown timer
     function startTimer() {
         timerInterval = setInterval(function() {
+            // Update the timer text with the remaining time
             const minutes = Math.floor(timerSeconds / 60);
             const seconds = timerSeconds % 60;
             timerText.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
+            // Decrement the timer
             timerSeconds--;
 
+            // Check if the timer has reached zero
             if (timerSeconds < 0) {
-                clearInterval(timerInterval);
-                timerText.textContent = "0:00";
+                clearInterval(timerInterval); // Stop the timer
+                timerText.textContent = "0:00"; // Display "0:00" when timer reaches zero
             }
-        }, 1000);
+        }, 1000); // Update the timer every second
     }
 
+    // Function to shuffle an array (Fisher-Yates algorithm)
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -79,23 +97,47 @@ document.addEventListener("DOMContentLoaded", function() {
         return array;
     }
 
-    // Function to check if two boxes are adjacent or diagonal
-    function isAdjacentOrDiagonal(box1, box2) {
-        const id1 = parseInt(box1.id);
-        const id2 = parseInt(box2.id);
-        const row1 = Math.ceil(id1 / 4);
-        const col1 = id1 % 4 === 0 ? 4 : id1 % 4;
-        const row2 = Math.ceil(id2 / 4);
-        const col2 = id2 % 4 === 0 ? 4 : id2 % 4;
+    // Function to check if two boxes are adjacent or diagonal to each other
+    // Function to check if two boxes are adjacent or diagonal to each other
+function isAdjacentOrDiagonal(box1, box2) {
+    const id1 = parseInt(box1.id);
+    const id2 = parseInt(box2.id);
+    const row1 = Math.floor((id1 - 1) / 4); // Row index of box1
+    const col1 = (id1 - 1) % 4; // Column index of box1
+    const row2 = Math.floor((id2 - 1) / 4); // Row index of box2
+    const col2 = (id2 - 1) % 4; // Column index of box2
+    const rowDiff = Math.abs(row1 - row2);
+    const colDiff = Math.abs(col1 - col2);
+    return rowDiff <= 1 && colDiff <= 1; // Check if row and column differences are less than or equal to 1
+}
 
-        const rowDiff = Math.abs(row1 - row2);
-        const colDiff = Math.abs(col1 - col2);
 
-        return (rowDiff <= 1 && colDiff <= 1); // Check if the boxes are adjacent or diagonal
-    }
-
+    // Event listener for the start button click
     startButton.addEventListener("click", function() {
         shuffleGameBoard();
-        previousBox = null; // Reset the previousBox variable when start button is clicked
     });
+
+    // Event listener for box clicks
+    gameBoard.addEventListener("click", function(event) {
+        handleBoxClick(event);
+    });
+
+    // Function to handle box clicks
+    function handleBoxClick(event) {
+        const clickedBox = event.target;
+
+        // Check if the clicked box is adjacent or diagonal to the last selected box
+        if (
+            selectedBoxes.size === 0 || // Allow selection if no boxes are currently selected
+            (lastSelectedBox && isAdjacentOrDiagonal(clickedBox, lastSelectedBox))
+        ) {
+            // Only allow selection if the box is not already selected
+            if (!selectedBoxes.has(clickedBox)) {
+                clickedBox.style.backgroundColor = '#1ac2ce';
+                selectedBoxes.add(clickedBox);
+                selectedWord += clickedBox.textContent;
+                lastSelectedBox = clickedBox;
+            }
+        }
+    }
 });
