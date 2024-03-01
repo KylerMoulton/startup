@@ -3,7 +3,11 @@ document.addEventListener("DOMContentLoaded", function() {
     const gameBoard = document.getElementById("game-board");
     const timerText = document.getElementById("timer-text");
 
-    // Array of strings representing character sets for each grid box
+    let timerInterval;
+    let timerSeconds = 180;
+
+    let previousBox = null; // Variable to store the previously clicked box
+
     const characterSets = [
         "RIFOBX",
         "IFEHEY",
@@ -23,62 +27,50 @@ document.addEventListener("DOMContentLoaded", function() {
         "PACEMD"
     ];
 
-    let timerInterval; // Variable to hold the interval for the countdown timer
-    let timerSeconds = 180; // Total number of seconds for the timer (3 minutes)
-
-    // Function to shuffle the game board
     function shuffleGameBoard() {
-        // Reset the timer
         clearInterval(timerInterval);
         timerSeconds = 180;
         timerText.textContent = "3:00";
 
-        // Get all grid boxes
         const gridBoxes = gameBoard.querySelectorAll('.gridbox');
-
-        // Shuffle the character sets array
-        const shuffledSets = shuffleArray(characterSets);
-
-        // Assign characters from shuffled sets to grid boxes
         gridBoxes.forEach(function(box) {
-            // Get a random character set from shuffled array
+            box.style.backgroundColor = '';
+        });
+
+        const shuffledSets = shuffleArray(characterSets);
+        gridBoxes.forEach(function(box) {
             const randomSet = shuffledSets[Math.floor(Math.random() * shuffledSets.length)];
-            // Get a random character from the set and add an extra whitespace character
             const randomCharacter = randomSet[Math.floor(Math.random() * randomSet.length)];
-            // Assign the character to the grid box
             box.textContent = randomCharacter;
 
-            // Add click event listener to each grid box
             box.addEventListener('click', function() {
-                // Change background color to red
-                box.style.backgroundColor = 'red';
+                if (!box.style.backgroundColor) { // Check if the box has not been clicked before
+                    if (!previousBox || isAdjacentOrDiagonal(previousBox, box)) { // Check if the box is adjacent or diagonal to the previous box
+                        box.style.backgroundColor = '#1ac2ce'; // Change background color to #1ac2ce
+                        previousBox = box; // Update the previousBox variable
+                    }
+                }
             });
         });
 
-        // Start the countdown timer
         startTimer();
     }
 
-    // Function to start the countdown timer
     function startTimer() {
         timerInterval = setInterval(function() {
-            // Update the timer text with the remaining time
             const minutes = Math.floor(timerSeconds / 60);
             const seconds = timerSeconds % 60;
             timerText.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
-            // Decrement the timer
             timerSeconds--;
 
-            // Check if the timer has reached zero
             if (timerSeconds < 0) {
-                clearInterval(timerInterval); // Stop the timer
-                timerText.textContent = "0:00"; // Display "0:00" when timer reaches zero
+                clearInterval(timerInterval);
+                timerText.textContent = "0:00";
             }
-        }, 1000); // Update the timer every second
+        }, 1000);
     }
 
-    // Function to shuffle an array (Fisher-Yates algorithm)
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -87,8 +79,23 @@ document.addEventListener("DOMContentLoaded", function() {
         return array;
     }
 
-    // Event listener for the start button click
+    // Function to check if two boxes are adjacent or diagonal
+    function isAdjacentOrDiagonal(box1, box2) {
+        const id1 = parseInt(box1.id);
+        const id2 = parseInt(box2.id);
+        const row1 = Math.ceil(id1 / 4);
+        const col1 = id1 % 4 === 0 ? 4 : id1 % 4;
+        const row2 = Math.ceil(id2 / 4);
+        const col2 = id2 % 4 === 0 ? 4 : id2 % 4;
+
+        const rowDiff = Math.abs(row1 - row2);
+        const colDiff = Math.abs(col1 - col2);
+
+        return (rowDiff <= 1 && colDiff <= 1); // Check if the boxes are adjacent or diagonal
+    }
+
     startButton.addEventListener("click", function() {
         shuffleGameBoard();
+        previousBox = null; // Reset the previousBox variable when start button is clicked
     });
 });
