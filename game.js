@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const startButton = document.getElementById("start-button");
     const gameBoard = document.getElementById("game-board");
     const timerText = document.getElementById("timer-text");
+    const resetWordButton = document.getElementById("reset-word");
+    const submitWordButton = document.getElementById("submit-word");
 
     // Array of strings representing character sets for each grid box
     const characterSets = [
@@ -28,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let selectedBoxes = new Set(); // Set to store clicked boxes
     let selectedWord = ""; // String to store the selected word
     let lastSelectedBox = null; // Variable to store the last selected box
+    let gameStarted = false; // Variable to track if the game has started
 
     // Function to shuffle the game board
     function shuffleGameBoard() {
@@ -57,6 +60,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Start the countdown timer
         startTimer();
+
+        // Enable box click event listener
+        gameBoard.addEventListener("click", handleBoxClick);
+        gameStarted = true;
     }
 
     // Function to reset selected boxes and word
@@ -84,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (timerSeconds < 0) {
                 clearInterval(timerInterval); // Stop the timer
                 timerText.textContent = "0:00"; // Display "0:00" when timer reaches zero
+                gameBoard.removeEventListener("click", handleBoxClick); // Disable box click event listener
             }
         }, 1000); // Update the timer every second
     }
@@ -98,28 +106,33 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Function to check if two boxes are adjacent or diagonal to each other
-    // Function to check if two boxes are adjacent or diagonal to each other
-function isAdjacentOrDiagonal(box1, box2) {
-    const id1 = parseInt(box1.id);
-    const id2 = parseInt(box2.id);
-    const row1 = Math.floor((id1 - 1) / 4); // Row index of box1
-    const col1 = (id1 - 1) % 4; // Column index of box1
-    const row2 = Math.floor((id2 - 1) / 4); // Row index of box2
-    const col2 = (id2 - 1) % 4; // Column index of box2
-    const rowDiff = Math.abs(row1 - row2);
-    const colDiff = Math.abs(col1 - col2);
-    return rowDiff <= 1 && colDiff <= 1; // Check if row and column differences are less than or equal to 1
-}
-
+    function isAdjacentOrDiagonal(box1, box2) {
+        const id1 = parseInt(box1.id);
+        const id2 = parseInt(box2.id);
+        const row1 = Math.floor((id1 - 1) / 4); // Row index of box1
+        const col1 = (id1 - 1) % 4; // Column index of box1
+        const row2 = Math.floor((id2 - 1) / 4); // Row index of box2
+        const col2 = (id2 - 1) % 4; // Column index of box2
+        const rowDiff = Math.abs(row1 - row2);
+        const colDiff = Math.abs(col1 - col2);
+        return rowDiff <= 1 && colDiff <= 1; // Check if row and column differences are less than or equal to 1
+    }
 
     // Event listener for the start button click
     startButton.addEventListener("click", function() {
-        shuffleGameBoard();
+        if (!gameStarted) {
+            shuffleGameBoard();
+        }
     });
 
-    // Event listener for box clicks
-    gameBoard.addEventListener("click", function(event) {
-        handleBoxClick(event);
+    // Event listener for reset word button click
+    resetWordButton.addEventListener("click", function() {
+        resetSelected();
+    });
+
+    // Event listener for submit word button click
+    submitWordButton.addEventListener("click", function() {
+        // Your code to handle submitting the word
     });
 
     // Function to handle box clicks

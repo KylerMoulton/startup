@@ -22,6 +22,7 @@ main {
   justify-content: center;
   height: 69.8vh;
   margin: 10px;
+  margin-top: 18px;
 }
 
 .Game-Notifications {
@@ -108,7 +109,9 @@ main {
   align-items: center;
 }
 
-#start-button {
+#start-button,
+#submit-word,
+#reset-word {
   font-family: "Kanit", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -121,4 +124,11 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#word-handling{
+  display: flex;
+}
+#submit-word,
+#reset-word {
+  margin-top: 5px;
 }
