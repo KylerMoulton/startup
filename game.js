@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     const startButton = document.getElementById("start-button");
     const gameBoard = document.getElementById("game-board");
+    const timerText = document.getElementById("timer-text");
 
     // Array of strings representing character sets for each grid box
     const characterSets = [
@@ -22,8 +23,16 @@ document.addEventListener("DOMContentLoaded", function() {
         "PACEMD"
     ];
 
+    let timerInterval; // Variable to hold the interval for the countdown timer
+    let timerSeconds = 180; // Total number of seconds for the timer (3 minutes)
+
     // Function to shuffle the game board
     function shuffleGameBoard() {
+        // Reset the timer
+        clearInterval(timerInterval);
+        timerSeconds = 180;
+        timerText.textContent = "3:00";
+
         // Get all grid boxes
         const gridBoxes = gameBoard.querySelectorAll('.gridbox');
 
@@ -39,6 +48,28 @@ document.addEventListener("DOMContentLoaded", function() {
             // Assign the character to the grid box
             box.textContent = randomCharacter;
         });
+
+        // Start the countdown timer
+        startTimer();
+    }
+
+    // Function to start the countdown timer
+    function startTimer() {
+        timerInterval = setInterval(function() {
+            // Update the timer text with the remaining time
+            const minutes = Math.floor(timerSeconds / 60);
+            const seconds = timerSeconds % 60;
+            timerText.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+            // Decrement the timer
+            timerSeconds--;
+
+            // Check if the timer has reached zero
+            if (timerSeconds < 0) {
+                clearInterval(timerInterval); // Stop the timer
+                timerText.textContent = "0:00"; // Display "0:00" when timer reaches zero
+            }
+        }, 1000); // Update the timer every second
     }
 
     // Function to shuffle an array (Fisher-Yates algorithm)
