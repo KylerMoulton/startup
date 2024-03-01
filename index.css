@@ -31,6 +31,10 @@ main {
   padding: 10px;
   background-color: #f0f0f0; 
   border-radius: 10px; 
+  max-width: calc(100% - 24px); /* Adjust width to fit container with padding */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Display ellipsis for overflowing text */
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 .player-name {
@@ -46,6 +50,10 @@ main {
   padding: 10px;
   background-color: #f0f0f0; 
   border-radius: 10px; 
+  max-width: calc(100% - 24px); /* Adjust width to fit container with padding */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Display ellipsis for overflowing text */
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 .word {
@@ -53,7 +61,12 @@ main {
   padding: 8px 12px; 
   margin-bottom: 5px; 
   border-radius: 5px; 
+  max-width: calc(100% - 24px); /* Adjust width to fit container with padding */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Display ellipsis for overflowing text */
+  white-space: nowrap; /* Prevent text wrapping */
 }
+
 
 #game {
   display: flex;
