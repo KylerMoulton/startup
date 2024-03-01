@@ -41,4 +41,11 @@ You know that game that your grandparents had that you always hated playing beca
 * Responsive to window resizing** - My app looks kind of great until I hit a certain size which I plan on fixing
 * Application elements** - I tried to use a variety of colors that coresponded with boggle and also looked decent together
 * Application text content** - Consistent fonts
-* Application images** - I made the image the background for the rules tab and made the rules transparent slightly so that you can see the ful thing.
+* Application images** - I made the image the background for the rules tab and made the rules transparent slightly so that you can see the full thing.
+
+## JavaScript deliverable
+
+- **login** - You can login or register and it checks to validate the uniquness of the username
+- **database** - stores game data like username, score, and longest word in local storage to display in the scoreboard
+- **WebSocket** - I used the setInterval function to periodically display a random score someone got. This will be replaced with WebSocket messages later.
+- **application logic** - You can press the start button in order to start clicking boxs, you can only click on boxes next to the last box that you selected. You can reset or submit your selection. When you submit it makes an api call that sees if its a valid word longer than 2 letters and will update the score based on boggle scoring.
