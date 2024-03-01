@@ -47,6 +47,12 @@ document.addEventListener("DOMContentLoaded", function() {
             const randomCharacter = randomSet[Math.floor(Math.random() * randomSet.length)];
             // Assign the character to the grid box
             box.textContent = randomCharacter;
+
+            // Add click event listener to each grid box
+            box.addEventListener('click', function() {
+                // Change background color to red
+                box.style.backgroundColor = 'red';
+            });
         });
 
         // Start the countdown timer
