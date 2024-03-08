@@ -1,6 +1,43 @@
+/* Rest of the CSS for table styling */
+
+/* Center the table within the section */
+table {
+    margin: 0 auto; /* Center the table horizontally */
+}
+
+/* Style for table cells */
+td, th {
+    padding: 10px; /* Padding inside cells */
+    border: none; /* Remove border */
+    background-color: transparent; /* Transparent background color */
+}
+
+/* Set width for each column */
+th:nth-child(1),
+td:nth-child(1) {
+    width: 20px; /* Enough room for 2 characters for # */
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+    width: 100px; /* Enough room for 15 characters for Name */
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+    width: 50px; /* Enough room for 3 characters for Score */
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+    /* Rest of the space for the Longest Word */
+}
+
+/* Styles for the rest of the HTML */
 html {
     background-color: #1ac2ce;
 }
+
 main {
     display: flex;
     justify-content: space-between;
@@ -15,33 +52,9 @@ main {
 #global {
     text-align: center;
     height: 63vh;
-    margin:10px;
+    margin: 10px;
     flex: 1;
     background-color: #f0f0f0;
     border-radius: 10px;
     padding: 20px;
 }
-
-.high-score-data {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 10px; 
-}
-
-.column {
-    text-align: center;
-    font-weight: bold;
-}
-
-.player-score-data {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 10px; 
-}
-
-.name,
-.score,
-.longest-word {
-    text-align: center;
-}
-
