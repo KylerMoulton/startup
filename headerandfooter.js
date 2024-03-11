@@ -1,6 +1,3 @@
-// Global variable to store the username
-let loggedInUsername = "";
-
 document.addEventListener("DOMContentLoaded", function() {
     const dialogButton = document.getElementById("show-diolog");
     const loginRegisterDialog = document.getElementById("Login-RegisterButton");
@@ -8,7 +5,16 @@ document.addEventListener("DOMContentLoaded", function() {
     const passwordInput = document.getElementById("password");
     let loggedIn = false;
 
+    // Hide the login form by default
     loginRegisterDialog.style.display = "none";
+
+    // Check if user is already logged in (persist login state)
+    const storedLoggedIn = localStorage.getItem("loggedIn");
+    if (storedLoggedIn === "true") {
+        const storedUsername = localStorage.getItem("loggedInUsername");
+        dialogButton.textContent = "Logout of " + storedUsername;
+        loggedIn = true;
+    }
 
     // Function to toggle login/register dialog visibility
     function toggleDialogVisibility() {
@@ -32,8 +38,9 @@ document.addEventListener("DOMContentLoaded", function() {
             // User logged in successfully
             dialogButton.textContent = ("Logout of " + username);
             loggedIn = true;
-            // Set the username to the global variable
-            loggedInUsername = username;
+            // Store login state and username in local storage
+            localStorage.setItem("loggedIn", "true");
+            localStorage.setItem("loggedInUsername", username);
             toggleDialogVisibility();
         } else {
             alert("Incorrect username or password.");
@@ -44,8 +51,9 @@ document.addEventListener("DOMContentLoaded", function() {
     function handleLogout() {
         dialogButton.textContent = "Login/Register";
         loggedIn = false;
-        // Clear the global variable
-        loggedInUsername = "";
+        // Clear login state and username from local storage
+        localStorage.removeItem("loggedIn");
+        localStorage.removeItem("loggedInUsername");
     }
 
     // Function to handle registration
