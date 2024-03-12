@@ -1,11 +1,15 @@
 // scoreboard.js
-function loadScores() {
+async function loadScores() {
     let gameData = [];
+
     const gameDataText = localStorage.getItem('gameData');
     if (gameDataText) {
         gameData = JSON.parse(gameDataText);
     }
+    displayScores(gameData);
+}
 
+function displayScores(gameData) {
     const personalTableBodyEl = document.querySelector('#personal-scores');
     const globalTableBodyEl = document.querySelector('#global-scores');
 
@@ -53,4 +57,4 @@ function createScoreRow(score, position) {
     return rowEl;
 }
 
-loadScores();
+displayScores();
