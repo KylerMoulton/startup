@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function() {
         scoreContainer.textContent = `Score: ${score.toString().padStart(2, '0')}`;
     }
     
-    function storeGameData(score) {
+    async function storeGameData(score) {
         const userName = loggedInUsername;
         let scores = [];
         const scoresText = localStorage.getItem('gameData');
@@ -212,8 +212,17 @@ document.addEventListener("DOMContentLoaded", function() {
           scores = JSON.parse(scoresText);
         }
         scores = updateScores(userName, score, scores);
-    
-        localStorage.setItem('gameData', JSON.stringify(scores));
+        try {
+            const response = await fetch('/api/score', {
+                method: 'POST',
+                headers: {'content-type': 'application/json'},
+                body: JSON.stringify(scores),
+              });
+            const newScores = await response.json();
+            localStorage.setItem('gameData', JSON.stringify(newScores));
+        } catch {
+            this.updateScores(scoresText);
+        }
       }
     
       function updateScores(userName, score, scores) {
