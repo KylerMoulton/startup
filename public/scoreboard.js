@@ -4,11 +4,13 @@ async function loadScores() {
     try {
         // Get the latest high scores from the service
         const response = await fetch('/api/scores');
-        scores = await response.json();
+        const scores = await response.json();
     
         // Save the scores in case we go offline in the future
         localStorage.setItem('scores', JSON.stringify(scores));
-      } catch {
+        
+        gameData = scores; // Update gameData with the fetched scores
+    } catch {
         const gameDataText = localStorage.getItem('gameData');
         if (gameDataText) {
             gameData = JSON.parse(gameDataText);
@@ -16,6 +18,7 @@ async function loadScores() {
     }
     displayScores(gameData);
 }
+
 
 function displayScores(gameData) {
     const personalTableBodyEl = document.querySelector('#personal-scores');
@@ -52,9 +55,9 @@ function createScoreRow(score, position) {
     const longestWordTdEl = document.createElement('td');
 
     positionTdEl.textContent = position;
-    nameTdEl.textContent = score.name;
-    scoreTdEl.textContent = score.score;
-    longestWordTdEl.textContent = score.longestWord;
+    nameTdEl.textContent = score.at(position-1).name;
+    scoreTdEl.textContent = score.at(position-1).score;
+    longestWordTdEl.textContent = score.at(position-1).longestWord;
 
     const rowEl = document.createElement('tr');
     rowEl.appendChild(positionTdEl);
@@ -65,4 +68,4 @@ function createScoreRow(score, position) {
     return rowEl;
 }
 
-displayScores();
+loadScores();
