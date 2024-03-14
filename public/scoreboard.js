@@ -1,13 +1,12 @@
 // scoreboard.js
 async function loadScores() {
-    let gameData = [];
     try {
         // Get the latest high scores from the service
         const response = await fetch('/api/scores');
         const scores = await response.json();
     
         // Save the scores in case we go offline in the future
-        localStorage.setItem('scores', JSON.stringify(scores));
+        localStorage.setItem('gameData', JSON.stringify(scores));
         
         gameData = scores; // Update gameData with the fetched scores
     } catch {
@@ -34,7 +33,7 @@ function displayScores(gameData) {
     if (gameData.length) {
         for (const [i, score] of gameData.entries()) {
             const rowEl = createScoreRow(score, i + 1);
-            if (score.name === loggedInUsername) {
+            if (score.at(i).name === loggedInUsername) {
                 personalTableBodyEl.appendChild(rowEl.cloneNode(true)); // Clone the row and add to personal table
                 globalTableBodyEl.appendChild(rowEl); // Add the original row to global table
             } else {
