@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Access the global variable loggedInUsername from login.js
-    console.log("Logged in username:", loggedInUsername);
-
+    let loggedInUsername = localStorage.getItem('loggedInUsername');
     const startButton = document.getElementById("start-button");
     const gameBoard = document.getElementById("game-board");
     const timerText = document.getElementById("timer-text");
@@ -219,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 body: JSON.stringify(scores),
               });
             const newScores = await response.json();
-            localStorage.setItem('gameData', JSON.stringify(newScores));
+            localStorage.setItem('gameData', JSON.stringify(newScores.scores));
         } catch {
             this.updateScores(scoresText);
         }
