@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function shuffleGameBoard() {
         clearInterval(timerInterval);
-        timerSeconds = 180;
+        timerSeconds = 20;
         timerText.textContent = "3:00";
         resetSelected();
         score = 0;
@@ -203,34 +203,52 @@ document.addEventListener("DOMContentLoaded", function() {
         scoreContainer.textContent = `Score: ${score.toString().padStart(2, '0')}`;
     }
     
-    async function storeGameData(score) {
+    // async function storeGameData(score) {
+    //     const userName = loggedInUsername;
+    //     let scores = [];
+    //     const scoresText = localStorage.getItem('gameData');
+    //     if (scoresText) {
+    //       scores = JSON.parse(scoresText);
+    //     }
+    //     scores = updateScores(userName, score, scores);
+    //     try {
+    //         const response = await fetch('/api/score', {
+    //             method: 'POST',
+    //             headers: {'content-type': 'application/json'},
+    //             body: JSON.stringify(scores),
+    //           });
+    //         const newScores = await response.json();
+    //         localStorage.setItem('gameData', JSON.stringify(newScores));
+    //     } catch {
+    //         this.updateScores(scoresText);
+    //     }
+    //   }
+      async function storeGameData(score) {
         const userName = loggedInUsername;
+        const newScore = { name: userName, score: score, longestWord: longestWord };
+        try {
+            const response = await fetch('/api/score', {
+                method: 'POST',
+                headers: {'content-type': 'application/json'},
+                body: JSON.stringify(newScore),
+              });
+            const newScores = await response.json();
+            localStorage.setItem('gameData', JSON.stringify(newScores));
+        } catch {
+            updateScores(score);
+        }
+      }
+    
+      function updateScores(newScore) {
         let scores = [];
         const scoresText = localStorage.getItem('gameData');
         if (scoresText) {
           scores = JSON.parse(scoresText);
         }
-        scores = updateScores(userName, score, scores);
-        try {
-            const response = await fetch('/api/score', {
-                method: 'POST',
-                headers: {'content-type': 'application/json'},
-                body: JSON.stringify(scores),
-              });
-            const newScores = await response.json();
-            localStorage.setItem('gameData', JSON.stringify(newScores.scores));
-        } catch {
-            this.updateScores(scoresText);
-        }
-      }
-    
-      function updateScores(userName, score, scores) {
-        const date = new Date().toLocaleDateString();
-        const newScore = { name: userName, score: score, longestWord: longestWord };
     
         let found = false;
         for (const [i, prevScore] of scores.entries()) {
-          if (score > prevScore.score) {
+          if (newScore > prevScore.score) {
             scores.splice(i, 0, newScore);
             found = true;
             break;
@@ -245,7 +263,7 @@ document.addEventListener("DOMContentLoaded", function() {
           scores.length = 10;
         }
     
-        return scores;
+        localStorage.setItem('gameData', JSON.stringify(scores));
       }
     
     
