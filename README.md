@@ -49,3 +49,13 @@ You know that game that your grandparents had that you always hated playing beca
 - **database** - stores game data like username, score, and longest word in local storage to display in the scoreboard
 - **WebSocket** - I used the setInterval function to periodically display a random score someone got. This will be replaced with WebSocket messages later.
 - **application logic** - You can press the start button in order to start clicking boxs, you can only click on boxes next to the last box that you selected. You can reset or submit your selection. When you submit it makes an api call that sees if its a valid word longer than 2 letters and will update the score based on boggle scoring.
+
+## Service deliverable
+
+For this deliverable I added backend endpoints that receives votes and returns the voting totals.
+
+- **Node.js/Express HTTP service** - done!
+- **Static middleware for frontend** - done!
+- **Calls to third party endpoints** - I make a call to a third party dictionary to check if the user spells a valid word.
+- **Backend service endpoints** - Placeholders for login that stores the current user on the server.
+- **Frontend calls service endpoints** - I did this using the fetch function.
