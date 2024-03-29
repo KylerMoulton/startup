@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
       
         if (response.ok) {
-          localStorage.setItem('loggedInUsername', userName);
+          localStorage.setItem('loggedInUsername', username);
           window.location.href = 'index.html';
           dialogButton.textContent = ("Logout of " + username);
             loggedIn = true;
