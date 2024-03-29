@@ -74,6 +74,16 @@ apiRouter.get('/user/:email', async (req, res) => {
 var secureApiRouter = express.Router();
 apiRouter.use(secureApiRouter);
 
+secureApiRouter.use(async (req, res, next) => {
+  authToken = req.cookies[authCookieName];
+  const user = await DB.getUserByToken(authToken);
+  if (user) {
+    next();
+  } else {
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
+});
+
 // GetScores
 apiRouter.get('/scores', (_req, res) => {
   res.send(scores);
