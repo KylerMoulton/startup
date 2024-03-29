@@ -17,3 +17,11 @@ const scoreCollection = db.collection('score');
     console.log(`Unable to connect to database with ${url} because ${ex.message}`);
     process.exit(1);
   });
+
+  function getUser(email) {
+    return userCollection.findOne({ email: email });
+  }
+  
+  function getUserByToken(token) {
+    return userCollection.findOne({ token: token });
+  }
