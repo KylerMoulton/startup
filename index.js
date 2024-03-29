@@ -70,6 +70,10 @@ apiRouter.get('/user/:email', async (req, res) => {
   res.status(404).send({ msg: 'Unknown' });
 });
 
+// secureApiRouter verifies credentials for endpoints
+var secureApiRouter = express.Router();
+apiRouter.use(secureApiRouter);
+
 // GetScores
 apiRouter.get('/scores', (_req, res) => {
   res.send(scores);
