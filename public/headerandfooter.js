@@ -80,15 +80,24 @@ document.addEventListener("DOMContentLoaded", function() {
     //         alert("Incorrect username or password.");
     //     }
     // }
-
-    // Function to handle logout
-    function handleLogout() {
+    function logout() {
         dialogButton.textContent = "Login/Register";
         loggedIn = false;
         // Clear login state and username from local storage
         localStorage.removeItem("loggedIn");
         localStorage.removeItem("loggedInUsername");
-    }
+        fetch(`/api/auth/logout`, {
+          method: 'delete',
+        }).then(() => (window.location.href = '/'));
+      }
+    // // Function to handle logout
+    // function handleLogout() {
+    //     dialogButton.textContent = "Login/Register";
+    //     loggedIn = false;
+    //     // Clear login state and username from local storage
+    //     localStorage.removeItem("loggedIn");
+    //     localStorage.removeItem("loggedInUsername");
+    // }
 
     // Function to handle registration
     function handleRegister() {
@@ -109,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
     dialogButton.addEventListener("click", function() {
         if (loggedIn) {
             // User is logged in, so logout
-            handleLogout();
+            logout();
         } else {
             // User is not logged in, so toggle login/register dialog
             toggleDialogVisibility();
