@@ -2,7 +2,7 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
 const express = require('express');
 const app = express();
-const DB = require('database.js');
+const DB = require('./database.js');
 
 const authCookieName = 'token';
 
@@ -85,7 +85,7 @@ secureApiRouter.use(async (req, res, next) => {
 });
 
 // GetScores
-secureApiRouterapiRouter.get('/scores', async (req, res) => {
+secureApiRouter.get('/scores', async (req, res) => {
   const scores = await DB.getHighScores();
   res.send(scores);
 });
