@@ -113,7 +113,16 @@ document.addEventListener("DOMContentLoaded", function() {
             alert("Registration successful. You can now log in.");
         }
     }
-
+    async function getUser(userName) {
+        let scores = [];
+        // See if we have a user with the given email.
+        const response = await fetch(`/api/user/${userName}`);
+        if (response.status === 200) {
+          return response.json();
+        }
+      
+        return null;
+      }
     // Toggle the display of the dialog or handle logout/login on button click
     dialogButton.addEventListener("click", function() {
         if (loggedIn) {
