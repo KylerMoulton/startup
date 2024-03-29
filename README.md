@@ -59,3 +59,14 @@ For this deliverable I added backend endpoints that receives votes and returns t
 - **Calls to third party endpoints** - I make a call to a third party dictionary to check if the user spells a valid word.
 - **Backend service endpoints** - Placeholders for login that stores the current user on the server.
 - **Frontend calls service endpoints** - I did this using the fetch function.
+
+## DB/Login deliverable
+
+For this deliverable I associat the scores with the user in the database and store each user
+
+- **MongoDB Atlas database created** - done!
+- **Stores data in MongoDB** - done!
+- **User registration** - Creates a new account in the database.
+- **existing user** - Allows them to see all the scores and the longest word associated with their username
+- **Use MongoDB to store credentials** - Stores both user and their scores/longest word.
+- **Restricts functionality** - You can't see any scores unless you are logged in, it also wont save a score until you log in
