@@ -53,3 +53,10 @@ const scoreCollection = db.collection('score');
     return cursor.toArray();
   }
   
+  module.exports = {
+    getUser,
+    getUserByToken,
+    createUser,
+    addScore,
+    getHighScores,
+  };
