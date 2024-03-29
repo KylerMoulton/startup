@@ -26,26 +26,60 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("main-content").classList.remove("blur");
         }
     }
-
-    // Function to handle login
-    function handleLogin() {
+    async function loginUser() {
+        loginOrCreate(`/api/auth/login`);
+      }
+      
+      async function createUser() {
+        loginOrCreate(`/api/auth/create`);
+      }
+      async function loginOrCreate(endpoint) {
         const username = usernameInput.value;
         const password = passwordInput.value;
-
-        // Check if user exists in local storage and if password matches
-        const userData = JSON.parse(localStorage.getItem(username));
-        if (userData && userData.password === password) {
-            // User logged in successfully
-            dialogButton.textContent = ("Logout of " + username);
+        const response = await fetch(endpoint, {
+          method: 'post',
+          body: JSON.stringify({ userName: username, password: password }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        });
+      
+        if (response.ok) {
+          localStorage.setItem('loggedInUsername', userName);
+          window.location.href = 'index.html';
+          dialogButton.textContent = ("Logout of " + username);
             loggedIn = true;
             // Store login state and username in local storage
             localStorage.setItem("loggedIn", "true");
             localStorage.setItem("loggedInUsername", username);
             toggleDialogVisibility();
         } else {
-            alert("Incorrect username or password.");
+          const body = await response.json();
+          const modalEl = document.querySelector('#msgModal');
+          modalEl.querySelector('.modal-body').textContent = `⚠ Error: ${body.msg}`;
+          const msgModal = new bootstrap.Modal(modalEl, {});
+          msgModal.show();
         }
-    }
+      }
+    // // Function to handle login
+    // function handleLogin() {
+    //     const username = usernameInput.value;
+    //     const password = passwordInput.value;
+
+    //     // Check if user exists in local storage and if password matches
+    //     const userData = JSON.parse(localStorage.getItem(username));
+    //     if (userData && userData.password === password) {
+    //         // User logged in successfully
+    //         dialogButton.textContent = ("Logout of " + username);
+    //         loggedIn = true;
+    //         // Store login state and username in local storage
+    //         localStorage.setItem("loggedIn", "true");
+    //         localStorage.setItem("loggedInUsername", username);
+    //         toggleDialogVisibility();
+    //     } else {
+    //         alert("Incorrect username or password.");
+    //     }
+    // }
 
     // Function to handle logout
     function handleLogout() {
@@ -83,8 +117,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Handle login button click
-    document.getElementById("login-button").addEventListener("click", handleLogin);
+    document.getElementById("login-button").addEventListener("click", loginUser);
 
     // Handle register button click
-    document.getElementById("register-button").addEventListener("click", handleRegister);
+    document.getElementById("register-button").addEventListener("click", createUser);
 });
