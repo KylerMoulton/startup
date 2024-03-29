@@ -85,13 +85,16 @@ secureApiRouter.use(async (req, res, next) => {
 });
 
 // GetScores
-apiRouter.get('/scores', (_req, res) => {
+secureApiRouterapiRouter.get('/scores', async (req, res) => {
+  const scores = await DB.getHighScores();
   res.send(scores);
 });
 
 // SubmitScore
-apiRouter.post('/score', (req, res) => {
-  scores = updateScores(req.body, scores);
+secureApiRouter.post('/score', async (req, res) => {
+  const score = { ...req.body, ip: req.ip };
+  await DB.addScore(score);
+  const scores = await DB.getHighScores();
   res.send(scores);
 });
 
