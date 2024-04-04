@@ -2,7 +2,7 @@
 Startup application for BYU CS260
 
 ## Notes
-[click here](notes.md)
+[click here](public/notes.md)
 
 ## Description Deliverable
 ### Elevator Pitch
