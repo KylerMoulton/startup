@@ -145,3 +145,5 @@ function updateScores(newScore, scores) {
 
   return scores;
 }
+
+peerProxy(httpService);
