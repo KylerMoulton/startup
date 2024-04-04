@@ -28,11 +28,6 @@ td:nth-child(3) {
     width: 50px; /* Enough room for 3 characters for Score */
 }
 
-th:nth-child(4),
-td:nth-child(4) {
-    /* Rest of the space for the Longest Word */
-}
-
 /* Styles for the rest of the HTML */
 html {
     background-color: #1ac2ce;
@@ -57,4 +52,5 @@ main {
     background-color: #f0f0f0;
     border-radius: 10px;
     padding: 20px;
+    overflow-y: scroll;
 }

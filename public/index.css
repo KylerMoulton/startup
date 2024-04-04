@@ -35,6 +35,7 @@ main {
   overflow: hidden;
   text-overflow: ellipsis; /* Display ellipsis for overflowing text */
   white-space: nowrap; /* Prevent text wrapping */
+  overflow-y:scroll;
 }
 
 .player-name {
@@ -54,6 +55,7 @@ main {
   overflow: hidden;
   text-overflow: ellipsis; /* Display ellipsis for overflowing text */
   white-space: nowrap; /* Prevent text wrapping */
+  overflow-y: scroll;
 }
 
 .word {
