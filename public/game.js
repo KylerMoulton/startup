@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
     configureWebSocket();
     function shuffleGameBoard() {
         clearInterval(timerInterval);
-        timerSeconds = 180;
+        timerSeconds = 20;
         timerText.textContent = "3:00";
         resetSelected();
         score = 0;
@@ -290,16 +290,17 @@ document.addEventListener("DOMContentLoaded", function() {
         const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
         this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
         this.socket.onopen = (event) => {
-          displayMsg('Welcome', 'To', 'Boggle');
+          displayMsg('Welcome', 'Welcome To', 'Boggle');
         };
         this.socket.onclose = (event) => {
-          displayMsg('See', 'You', 'Next Time');
+          displayMsg('See', 'See You', 'Next Time');
         };
         this.socket.onmessage = async (event) => {
           const msg = JSON.parse(await event.data.text());
           if (msg.type === GameEndEvent) {
-            displayMsg('player', msg.from, `scored ${msg.value.score}`);
-            displayMsg('player', msg.from, 'had a longest word of', longestWord);
+            displayMsg('player', msg.from, `scored ${msg.value}`);
+          } else if (msg.type === LongestWordEvent) {
+            displayMsg('player', msg.from, `had a longest word of ${msg.value}`);
           } else if (msg.type === GameStartEvent) {
             displayMsg('player', msg.from, `started a new game`);
           }
