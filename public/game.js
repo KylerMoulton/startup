@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let foundWords = [];
     let longestWord = "";
 
+    configureWebSocket();
     function shuffleGameBoard() {
         clearInterval(timerInterval);
         timerSeconds = 180;
@@ -74,6 +75,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 resetButton.disabled = true;
                 
                 // Game over, store data
+                broadcastEvent(loggedInUsername,"Scored",score);
+                broadcastEvent({}, "Longest word", longestWord);
                 storeGameData(score);
             }
         }, 1000);
@@ -121,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function() {
         gameBoard.addEventListener("click", handleBoxClick);
         submitButton.disabled = false;
         resetButton.disabled = false;
+        broadcastEvent(loggedInUsername,"started a game", {});
     });
 
     gameBoard.addEventListener("click", function(event) {
