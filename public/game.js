@@ -9,6 +9,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const resetButton = document.getElementById("reset-word");
     const wordsFound = document.querySelector(".Words-found");
 
+    const GameEndEvent = 'gameEnd';
+    const GameStartEvent = 'gameStart';
+    const LongestWordEvent = 'longestWord';
+
     const characterSets = [
         "RIFOBX", "IFEHEY", "DENOWS", "UTOKND",
         "HMSRAO", "LUPETS", "ACITOA", "YLGKUE",
@@ -75,8 +79,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 resetButton.disabled = true;
                 
                 // Game over, store data
-                broadcastEvent(loggedInUsername,"Scored",score);
-                broadcastEvent({}, "Longest word", longestWord);
+                broadcastEvent(loggedInUsername,GameEndEvent,score);
+                broadcastEvent(loggedInUsername, LongestWordEvent, longestWord);
                 storeGameData(score);
             }
         }, 1000);
@@ -124,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function() {
         gameBoard.addEventListener("click", handleBoxClick);
         submitButton.disabled = false;
         resetButton.disabled = false;
-        broadcastEvent(loggedInUsername,"started a game", {});
+        broadcastEvent(loggedInUsername,GameStartEvent, {});
     });
 
     gameBoard.addEventListener("click", function(event) {
@@ -286,15 +290,16 @@ document.addEventListener("DOMContentLoaded", function() {
         const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
         this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
         this.socket.onopen = (event) => {
-          displayMsg('system', 'game', 'connected');
+          displayMsg('Welcome', 'To', 'Boggle');
         };
         this.socket.onclose = (event) => {
-          displayMsg('system', 'game', 'disconnected');
+          displayMsg('See', 'You', 'Next Time');
         };
         this.socket.onmessage = async (event) => {
           const msg = JSON.parse(await event.data.text());
           if (msg.type === GameEndEvent) {
             displayMsg('player', msg.from, `scored ${msg.value.score}`);
+            displayMsg('player', msg.from, 'had a longest word of', longestWord);
           } else if (msg.type === GameStartEvent) {
             displayMsg('player', msg.from, `started a new game`);
           }
@@ -302,9 +307,11 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     
       function displayMsg(cls, from, msg) {
-        const chatText = document.querySelector('#player-messages');
+        const chatText = document.querySelector('.Game-Notifications');
+        // `<div class="player-name"><span class="player-event">Eich</span> scored ${score}</div>` + chatText.innerHTML;
+
         chatText.innerHTML =
-          `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` + chatText.innerHTML;
+        `<div class="player-name"><span class="player-event">${from}</span> ${msg}</div>` + chatText.innerHTML;
       }
     
       function broadcastEvent(from, type, value) {
