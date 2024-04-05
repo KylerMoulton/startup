@@ -54,8 +54,8 @@ function displayScores(scores) {
             }
         }
     } else {
-        personalTableBodyEl.innerHTML = '<tr><td colspan="4">Be the first to score</td></tr>';
-        globalTableBodyEl.innerHTML = '<tr><td colspan="4">Be the first to score</td></tr>';
+        personalTableBodyEl.innerHTML = '<tr><td colspan="4">Login to view/save scores</td></tr>';
+        globalTableBodyEl.innerHTML = '<tr><td colspan="4">Login to view/save scores</td></tr>';
     }
 }
 
