@@ -70,3 +70,13 @@ For this deliverable I associat the scores with the user in the database and sto
 - **existing user** - Allows them to see all the scores and the longest word associated with their username
 - **Use MongoDB to store credentials** - Stores both user and their scores/longest word.
 - **Restricts functionality** - You can't see any scores unless you are logged in, it also wont save a score until you log in
+
+## WebSocket deliverable
+
+For this deliverable I used webSocket to update the other users when another play starts a game and when they end a game which will 
+contain the score and the longest word that that user spelled.
+
+- **Backend listens for WebSocket connection** - done!
+- **Frontend makes WebSocket connection** - done!
+- **Data sent over WebSocket connection** - done!
+- **WebSocket data displayed** - User can see when players start and finish a game and other users are notified when they do the same
