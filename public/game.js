@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
     configureWebSocket();
     function shuffleGameBoard() {
         clearInterval(timerInterval);
-        timerSeconds = 20;
+        timerSeconds = 180;
         timerText.textContent = "3:00";
         resetSelected();
         score = 0;
