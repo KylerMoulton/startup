@@ -1,0 +1,200 @@
+html, body {
+  margin: 0;
+  margin-top: 0;
+  padding: 0;
+} 
+#navbar {
+  list-style-type: none;
+  background-color:rgb(255, 185, 33);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+#navbar h1 {
+  color:#1ac2ce;
+  text-shadow:
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+#navbar ul {
+  list-style-type: none;
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  padding-left: 20px;
+}
+
+#navbar li {
+  margin-right: 30px; 
+}
+
+#navbar  {
+  font-family: "Kanit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+#navbar a {
+  text-decoration: none;
+  color:#1ac2ce;
+  text-shadow:
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+button#show-diolog {
+  font-family: "Kanit", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  padding: 8px 16px;
+  background-color: #1ac2ce; 
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  text-shadow:
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+button#show-diolog:hover {
+  transform: scale(1.1);
+  transition-duration: 0.5s;
+}
+button#show-diolog:active {
+  background-color: #249ca5;
+  transition-duration: all .5s;
+}
+#home:hover {
+  font-size:larger;
+  transition-duration: 0.5s;
+}
+#home:active {
+  color: #249ca5;
+  transition-duration: all .5s;
+}
+#scores:hover {
+  font-size:larger;
+  transition-duration: 0.5s;
+}
+#scores:active {
+  color: #249ca5;
+  transition-duration: all .5s;
+}
+#rules:hover {
+  font-size:larger;
+  transition-duration: 0.5s;
+}
+#rules:active {
+  color: #249ca5;
+  transition-duration: all .5s;
+}
+
+#footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 97.1%;
+  display: flex;
+  background-color:rgb(255, 185, 33);
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 20px;
+  text-decoration: none;
+  color:#1ac2ce;
+  text-shadow: #249ca5;
+  font-size:larger;
+  text-shadow:
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+#footer a {
+  text-decoration: none;
+  color:#1ac2ce;
+  font-size:larger;
+  text-shadow:
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+#footer a:hover {
+  font-size:x-large;
+  transition-duration: 0.5s;
+}
+#footer a:active {
+  color: #249ca5;
+  transition-duration: all .5s;
+}
+
+/* Styles for the dialog box */
+#Login-RegisterButton {
+  position: fixed;
+  top: 52%;
+  left: 18.5%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(255, 185, 33);;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 10000; 
+  display: open; 
+  text-align: center; 
+}
+
+.button-container {
+  margin-bottom: 20px;
+}
+
+#login-button,
+#register-button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  background-color: #1ac2ce; 
+  color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#login-button:hover,
+#register-button:hover {
+  background-color: #169aa3; 
+}
+
+#username,
+#password {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #1ac2ce; 
+  border-radius: 5px;
+  box-sizing: border-box; 
+}
+
+
+#username:hover,
+#password:hover {
+  border-color: #1ea9b3; 
+}
+
+#username:focus,
+#password:focus {
+  outline: none; 
+  border-color: black; 
+}
+
+.blur {
+  filter: blur(5px); /* Adjust blur intensity as needed */
+}
