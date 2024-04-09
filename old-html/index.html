@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boggle4DaGoats</title>
+    <link rel="icon" href="boggle.ico" />
+    <link rel="stylesheet" href="headerandfooter.css">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    </style>
+    <script src="headerandfooter.js"></script>
+    <script src="game.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav id="navbar">
+            <ul>
+                <li>
+                    <h1 id="title">Boggle4DaGoats</h1>
+                </li>
+                <li><a id="home" href="index.html">Home</a></li>
+                <li><a id="scores" href="scores.html">Scores</a></li>
+                <li><a id="rules" href="rules.html">Rules</a></li>
+                <li>
+                    <dialog open id="Login-RegisterButton">
+                        <div class="button-container">
+                            <button id="login-button">Login</button>
+                            <button id="register-button">Register</button>
+                        </div>
+                        <input type="text" id="username" placeholder="Enter your username" />
+                        <br>
+                        <input type="password" id="password" placeholder="Enter your password" />
+                    </dialog>
+
+                </li>
+            </ul>
+            <li><button id="show-diolog">Login/Register</button></li>
+        </nav>
+    </header>
+    <main id="main-content">
+        <section id="websocket">
+            <div class="Game-Notifications">
+            </div>
+        </section>
+        <section id="game-container">
+            <div id="timer">
+                <div id="score-container">Score: 00</div>
+                <div id="timer-word">Time Left:</div>
+                <div id="timer-text">3:00</div>
+                <button id="start-button">Start</button>
+            </div>
+            <div id="game-board">
+                <div id='1' class='gridbox'>W</div>
+                <div id='2' class='gridbox'>E</div>
+                <div id='3' class='gridbox'>L</div>
+                <div id='4' class='gridbox'>C</div>
+                <div id='5' class='gridbox'>O</div>
+                <div id='6' class='gridbox'>M</div>
+                <div id='7' class='gridbox'>E</div>
+                <div id='8' class='gridbox'>T</div>
+                <div id='9' class='gridbox'>O</div>
+                <div id='10' class='gridbox'>B</div>
+                <div id='11' class='gridbox'>O</div>
+                <div id='12' class='gridbox'>G</div>
+                <div id='13' class='gridbox'>G</div>
+                <div id='14' class='gridbox'>L</div>
+                <div id='15' class='gridbox'>E</div>
+                <div id='16' class='gridbox'>!</div>
+            </div>
+            <div id="word-handling">
+                <button id="reset-word">Reset Word</button>
+                <button id="submit-word">Submit Word</button>
+            </div>
+        </section>
+        <section id="UserWords">
+            <div class="Words-found">
+                <div class="word">Here is where words you spell will apear and </div>
+                <div class="word">notifications on if a word is valid</div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div id="footer">
+            <span class="text-reset">Kyler Moulton</span>
+            <br />
+            <a href="https://github.com/KylerMoulton/startup">GitHub</a>
+        </div>
+    </footer>
+</body>
+
+</html>
