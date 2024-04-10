@@ -4,7 +4,7 @@ import './rules.css';
 
 export function Rules() {
   return (
-    <main>
+    <main className='rulesMain'>
         <div className="background-image">
             <div className="rules-container">
                 <ul>
