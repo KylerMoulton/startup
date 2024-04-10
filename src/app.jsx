@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
-import { Home } from './home/home';
-import { Scores } from './scores/scores';
-import { Rules } from './rules/rules';
+import { Home } from './home/home.jsx';
+import { Scores } from './scores/scores.jsx';
+import { Rules } from './rules/rules.jsx';
 import './app.css';
 
 function App() {
