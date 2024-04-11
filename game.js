@@ -211,26 +211,6 @@ document.addEventListener("DOMContentLoaded", function() {
         scoreContainer.textContent = `Score: ${score.toString().padStart(2, '0')}`;
     }
     
-    // async function storeGameData(score) {
-    //     const userName = loggedInUsername;
-    //     let scores = [];
-    //     const scoresText = localStorage.getItem('gameData');
-    //     if (scoresText) {
-    //       scores = JSON.parse(scoresText);
-    //     }
-    //     scores = updateScores(userName, score, scores);
-    //     try {
-    //         const response = await fetch('/api/score', {
-    //             method: 'POST',
-    //             headers: {'content-type': 'application/json'},
-    //             body: JSON.stringify(scores),
-    //           });
-    //         const newScores = await response.json();
-    //         localStorage.setItem('gameData', JSON.stringify(newScores));
-    //     } catch {
-    //         this.updateScores(scoresText);
-    //     }
-    //   }
       async function storeGameData(score) {
         const userName = loggedInUsername;
         const newScore = { name: userName, score: score, longestWord: longestWord };
@@ -273,18 +253,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
         localStorage.setItem('gameData', JSON.stringify(scores));
       }
-    
-    
-    
-
-    // // Simulate chat messages that will come over WebSocket
-    // setInterval(() => {
-    //     const score = Math.floor(Math.random() * 3000);
-    //     const chatText = document.querySelector('.Game-Notifications');
-    //     chatText.innerHTML =
-    //     `<div class="player-name"><span class="player-event">Eich</span> scored ${score}</div>` +
-    //     chatText.innerHTML;
-    // }, 5000);
 
     function configureWebSocket() {
         const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
@@ -309,7 +277,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
       function displayMsg(cls, from, msg) {
         const chatText = document.querySelector('.Game-Notifications');
-        // `<div class="player-name"><span class="player-event">Eich</span> scored ${score}</div>` + chatText.innerHTML;
 
         chatText.innerHTML =
         `<div class="player-name"><span class="player-event">${from}</span> ${msg}</div>` + chatText.innerHTML;
