@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
-import { Home } from './home/home.jsx';
+//import { Home } from './home/home.jsx';
 import { GamePage } from './home/GamePage.jsx';
 import { Scores } from './scores/scores.jsx';
 import { Rules } from './rules/rules.jsx';
