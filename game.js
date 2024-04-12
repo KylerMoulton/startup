@@ -1,13 +1,9 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Access the global variable loggedInUsername from login.js
     let loggedInUsername = localStorage.getItem('loggedInUsername');
-    const startButton = document.getElementById("start-button");
-    const gameBoard = document.getElementById("game-board");
-    const timerText = document.getElementById("timer-text");
-    const scoreContainer = document.getElementById("score-container");
-    const submitButton = document.getElementById("submit-word");
-    const resetButton = document.getElementById("reset-word");
-    const wordsFound = document.querySelector(".Words-found");
+
+
+
 
     const GameEndEvent = 'gameEnd';
     const GameStartEvent = 'gameStart';
@@ -34,17 +30,19 @@ document.addEventListener("DOMContentLoaded", function() {
     function shuffleGameBoard() {
         clearInterval(timerInterval);
         timerSeconds = 180;
+        const timerText = document.getElementById("timer-text"); // Move timerText definition here
         timerText.textContent = "3:00";
         resetSelected();
         score = 0;
+        const scoreContainer = document.getElementById("score-container");
         scoreContainer.textContent = "Score: 00";
         foundWords = [];
         longestWord = "";
-
+        const gameBoard = document.getElementById("game-board");
         const gridBoxes = gameBoard.querySelectorAll('.gridbox');
         const shuffledSets = shuffleArray(characterSets);
 
-        gridBoxes.forEach(function(box) {
+        gridBoxes.forEach(function (box) {
             const randomSet = shuffledSets[Math.floor(Math.random() * shuffledSets.length)];
             const randomCharacter = randomSet[Math.floor(Math.random() * randomSet.length)];
             box.textContent = randomCharacter;
@@ -64,22 +62,27 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function startTimer() {
-        timerInterval = setInterval(function() {
+        timerInterval = setInterval(function () {
             const minutes = Math.floor(timerSeconds / 60);
             const seconds = timerSeconds % 60;
+            const timerText = document.getElementById("timer-text"); // Move timerText definition here
             timerText.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
             timerSeconds--;
 
             if (timerSeconds < 0) {
                 clearInterval(timerInterval);
+                const timerText = document.getElementById("timer-text"); // Move timerText definition here
                 timerText.textContent = "0:00";
                 gameInProgress = false;
+                const gameBoard = document.getElementById("game-board");
                 gameBoard.removeEventListener("click", handleBoxClick);
+                const submitButton = document.getElementById("submit-word"); // Move submitButton definition here
                 submitButton.disabled = true;
+                const resetButton = document.getElementById("reset-word"); // Move resetButton definition here
                 resetButton.disabled = true;
-                
+
                 // Game over, store data
-                broadcastEvent(loggedInUsername,GameEndEvent,score);
+                broadcastEvent(loggedInUsername, GameEndEvent, score);
                 broadcastEvent(loggedInUsername, LongestWordEvent, longestWord);
                 storeGameData(score);
             }
@@ -123,70 +126,99 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    startButton.addEventListener("click", function() {
-        shuffleGameBoard();
-        gameBoard.addEventListener("click", handleBoxClick);
-        submitButton.disabled = false;
-        resetButton.disabled = false;
-        broadcastEvent(loggedInUsername,GameStartEvent, {});
-    });
+    document.body.addEventListener("click", function (event) {
+        if (event.target && event.target.id === "start-button") {
+            const startButton = event.target; // Move startButton definition here
+            const gameBoard = document.getElementById("game-board");
 
-    gameBoard.addEventListener("click", function(event) {
-        handleBoxClick(event);
-    });
-
-    submitButton.addEventListener("click", function() {
-        if (selectedWord.length >= 3) {
-            const lowerCaseWord = selectedWord.toLowerCase();
-            if (!foundWords.includes(lowerCaseWord)) {
-                fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${selectedWord}`)
-                    .then(response => {
-                        if (response.ok) {
-                            return response.json();
-                        } else {
-                            throw new Error('Word not found in dictionary');
-                        }
-                    })
-                    .then(data => {
-                        updateScore([selectedWord]);
-                        const newWordDiv = document.createElement('div');
-                        newWordDiv.textContent = `You just spelled: ${selectedWord}`;
-                        newWordDiv.classList.add('word');
-                        wordsFound.prepend(newWordDiv);
-                        foundWords.push(lowerCaseWord);
-                        
-                        // Update longest word
-                        if (selectedWord.length > longestWord.length) {
-                            longestWord = selectedWord;
-                        }
-                    })
-                    .catch(error => {
-                        const newWordDiv = document.createElement('div');
-                        newWordDiv.textContent = `Invalid word!`;
-                        newWordDiv.classList.add('word');
-                        wordsFound.prepend(newWordDiv);
-                    })
-                    .finally(() => {
-                        resetSelected();
-                    });
-            } else {
-                const newWordDiv = document.createElement('div');
-                newWordDiv.textContent = `Word already spelled!`;
-                newWordDiv.classList.add('word');
-                wordsFound.prepend(newWordDiv);
-                resetSelected();
-            }
-        } else {
-            const newWordDiv = document.createElement('div');
-            newWordDiv.textContent = `Word must be at least 3 letters long!`;
-            newWordDiv.classList.add('word');
-            wordsFound.prepend(newWordDiv);
-            resetSelected();
+            shuffleGameBoard();
+            gameBoard.addEventListener("click", handleBoxClick);
+            const submitButton = document.getElementById("submit-word"); // Move submitButton definition here
+            submitButton.disabled = false;
+            const resetButton = document.getElementById("reset-word"); // Move resetButton definition here
+            resetButton.disabled = false;
+            broadcastEvent(loggedInUsername, GameStartEvent, {});
         }
     });
 
-    resetButton.addEventListener("click", function() {
-        resetSelected();
+    document.body.addEventListener("click", function (event) {
+        if (event.target && event.target.id === "submit-word") {
+            const submitButton = event.target; // Move submitButton definition here
+            if (selectedWord.length >= 3) {
+                const lowerCaseWord = selectedWord.toLowerCase();
+                if (!foundWords.includes(lowerCaseWord)) {
+                    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${selectedWord}`)
+                        .then(response => {
+                            if (response.ok) {
+                                // updateScore([selectedWord]);
+                                // const newWordDiv = document.createElement('div');
+                                // newWordDiv.textContent = `You just spelled: ${selectedWord}`;
+                                // newWordDiv.classList.add('word');
+                                // const wordsFound = document.querySelector(".Words-found");
+                                // wordsFound.prepend(newWordDiv);
+                                // foundWords.push(lowerCaseWord);
+
+                                // // Update longest word
+                                // if (selectedWord.length > longestWord.length) {
+                                //     longestWord = selectedWord;
+                                // }
+                                return response.json();
+                            } else {
+                                // const newWordDiv = document.createElement('div');
+                                // newWordDiv.textContent = `Invalid word!`;
+                                // newWordDiv.classList.add('word');
+                                // const wordsFound = document.querySelector(".Words-found");
+                                // wordsFound.prepend(newWordDiv);
+                                throw new Error('Word not found in dictionary');
+                            }
+                        })
+                        .then(data => {
+                            updateScore([selectedWord]);
+                            const newWordDiv = document.createElement('div');
+                            newWordDiv.textContent = `You just spelled: ${selectedWord}`;
+                            newWordDiv.classList.add('word');
+                            const wordsFound = document.querySelector(".Words-found");
+                            wordsFound.prepend(newWordDiv);
+                            foundWords.push(lowerCaseWord);
+
+                            // Update longest word
+                            if (selectedWord.length > longestWord.length) {
+                                longestWord = selectedWord;
+                            }
+                        })
+                        .catch(error => {
+                            const newWordDiv = document.createElement('div');
+                            newWordDiv.textContent = `Invalid word!`;
+                            newWordDiv.classList.add('word');
+                            const wordsFound = document.querySelector(".Words-found");
+                            wordsFound.prepend(newWordDiv);
+                        })
+                        .finally(() => {
+                            resetSelected();
+                        });
+                } else {
+                    const newWordDiv = document.createElement('div');
+                    newWordDiv.textContent = `Word already spelled!`;
+                    newWordDiv.classList.add('word');
+                    const wordsFound = document.querySelector(".Words-found");
+                    wordsFound.prepend(newWordDiv);
+                    resetSelected();
+                }
+            } else {
+                const newWordDiv = document.createElement('div');
+                newWordDiv.textContent = `Word must be at least 3 letters long!`;
+                newWordDiv.classList.add('word');
+                const wordsFound = document.querySelector(".Words-found");
+                wordsFound.prepend(newWordDiv);
+                resetSelected();
+            }
+        }
+    });
+
+    document.body.addEventListener("click", function (event) {
+        if (event.target && event.target.id === "reset-word") {
+            resetSelected();
+        }
     });
 
     function updateScore(newWords) {
@@ -208,86 +240,87 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         score += totalScore;
+        const scoreContainer = document.getElementById("score-container");
         scoreContainer.textContent = `Score: ${score.toString().padStart(2, '0')}`;
     }
-    
-      async function storeGameData(score) {
+
+    async function storeGameData(score) {
         const userName = loggedInUsername;
         const newScore = { name: userName, score: score, longestWord: longestWord };
         try {
             const response = await fetch('/api/score', {
                 method: 'POST',
-                headers: {'content-type': 'application/json'},
+                headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(newScore),
-              });
+            });
             const newScores = await response.json();
             localStorage.setItem('gameData', JSON.stringify(newScores));
         } catch {
             updateScores(score);
         }
-      }
-    
-      function updateScores(newScore) {
+    }
+
+    function updateScores(newScore) {
         let scores = [];
         const scoresText = localStorage.getItem('gameData');
         if (scoresText) {
-          scores = JSON.parse(scoresText);
+            scores = JSON.parse(scoresText);
         }
-    
+
         let found = false;
         for (const [i, prevScore] of scores.entries()) {
-          if (newScore > prevScore.score) {
-            scores.splice(i, 0, newScore);
-            found = true;
-            break;
-          }
+            if (newScore > prevScore.score) {
+                scores.splice(i, 0, newScore);
+                found = true;
+                break;
+            }
         }
-    
+
         if (!found) {
-          scores.push(newScore);
+            scores.push(newScore);
         }
-    
+
         if (scores.length > 10) {
-          scores.length = 10;
+            scores.length = 10;
         }
-    
+
         localStorage.setItem('gameData', JSON.stringify(scores));
-      }
+    }
 
     function configureWebSocket() {
         const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
         this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
         this.socket.onopen = (event) => {
-          displayMsg('Welcome', 'Welcome To', 'Boggle');
+            displayMsg('Welcome', 'Welcome To', 'Boggle');
         };
         this.socket.onclose = (event) => {
-          displayMsg('See', 'See You', 'Next Time');
+            displayMsg('See', 'See You', 'Next Time');
         };
         this.socket.onmessage = async (event) => {
-          const msg = JSON.parse(await event.data.text());
-          if (msg.type === GameEndEvent) {
-            displayMsg('player', msg.from, `scored ${msg.value}`);
-          } else if (msg.type === LongestWordEvent) {
-            displayMsg('player', msg.from, `had a longest word of ${msg.value}`);
-          } else if (msg.type === GameStartEvent) {
-            displayMsg('player', msg.from, `started a new game`);
-          }
+            const msg = JSON.parse(await event.data.text());
+            if (msg.type === GameEndEvent) {
+                displayMsg('player', msg.from, `scored ${msg.value}`);
+            } else if (msg.type === LongestWordEvent) {
+                displayMsg('player', msg.from, `had a longest word of ${msg.value}`);
+            } else if (msg.type === GameStartEvent) {
+                displayMsg('player', msg.from, `started a new game`);
+            }
         };
-      }
-    
-      function displayMsg(cls, from, msg) {
+    }
+
+    function displayMsg(cls, from, msg) {
         const chatText = document.querySelector('.Game-Notifications');
 
         chatText.innerHTML =
-        `<div class="player-name"><span class="player-event">${from}</span> ${msg}</div>` + chatText.innerHTML;
-      }
-    
-      function broadcastEvent(from, type, value) {
+            `<div class="player-name"><span class="player-event">${from}</span> ${msg}</div>` + chatText.innerHTML;
+    }
+
+    function broadcastEvent(from, type, value) {
         const event = {
-          from: from,
-          type: type,
-          value: value,
+            from: from,
+            type: type,
+            value: value,
         };
         this.socket.send(JSON.stringify(event));
-      }
+    }
 });
