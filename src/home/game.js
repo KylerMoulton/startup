@@ -322,6 +322,6 @@ document.addEventListener("DOMContentLoaded", function () {
             type: type,
             value: value,
         };
-        this.socket.send(JSON.stringify(event));
+        socket.send(JSON.stringify(event));
     }
 });
