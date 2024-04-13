@@ -80,3 +80,13 @@ contain the score and the longest word that that user spelled.
 - **Frontend makes WebSocket connection** - done!
 - **Data sent over WebSocket connection** - done!
 - **WebSocket data displayed** - User can see when players start and finish a game and other users are notified when they do the same
+
+## React deliverable
+
+
+For this deliverable I converted the application over to use React.
+
+- [x] **Bundled and transpiled** - done!
+- [x] **Components** - Login, scoreboard are components.
+- [x] **Router** - Routing between login, scoreboard, and game components.
+- [x] **Hooks** - React components use hooks to update states
