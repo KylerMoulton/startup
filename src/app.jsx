@@ -55,7 +55,7 @@ function App() {
             });
             setLoggedIn(false);
             localStorage.removeItem("loggedInUsername");
-            window.location.href = '/index.html';
+            window.location.href = '/';
         } catch (error) {
             console.error('Error logging out:', error);
         }
